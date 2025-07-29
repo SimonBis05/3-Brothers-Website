@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from '../public/3BrothersLogo.png';
 import './App.css';
 
 function App() {
@@ -6,18 +6,18 @@ function App() {
     <div className="App">
       <h1>3 Brothers Ottawa Landscaping</h1>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={`${process.env.PUBLIC_URL}/3BrothersLogo.png`} alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          lorem ipsum dolor sit amet, consectetur adipiscing elit. 
         </p>
-        <a
+        {/* <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
       </header>
     </div>
   );
