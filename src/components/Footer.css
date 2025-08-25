@@ -35,8 +35,15 @@
 .footer-social {
   margin-top: 16px;
   display: flex;
-  gap: 20px;
+  gap: 28px; /* Increased gap for desktop */
   justify-content: center;
+}
+
+/* On mobile, reduce gap for better fit */
+@media (max-width: 600px) {
+  .footer-social {
+    gap: 16px;
+  }
 }
 
 .footer-social a {
