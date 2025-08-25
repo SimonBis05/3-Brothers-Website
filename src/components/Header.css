@@ -70,16 +70,21 @@
   }
 
   .social-icons {
-    position: relative;
     display: flex;
-    gap: 8px;
-    margin: 0 8px;
+    gap: 15px;
+    align-items: center;
   }
 
   .social-icons a svg,
   .social-icons img {
     width: 20px;
     height: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .social-icons {
+    gap: 16px; /* Reduced gap on smaller screens */
   }
 }
 
