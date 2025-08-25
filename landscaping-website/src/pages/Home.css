@@ -1,0 +1,81 @@
+.home {
+  position: relative;
+  min-height: 100vh;
+  color: #fff;
+  padding-top: 150px !important;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 40px;
+}
+
+.home-content {
+  background: rgba(34, 34, 34, 0.85);
+  max-width: 1400px; /* Increased width */
+  margin: 0 auto;
+  padding: 40px 32px;
+  border-radius: 16px;
+}
+
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 32px 0;
+  justify-content: center;
+}
+
+.service-card {
+  background: #222;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  overflow: hidden;
+  width: 200px;
+  text-align: center;
+  color: #fff;
+}
+
+.service-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-bottom: 2px solid #4caf50;
+}
+
+.service-card h4 {
+  margin: 12px 0 8px 0;
+  color: #4caf50;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  padding: 0 8px 16px 8px;
+}
+
+.service-card.large {
+  background: #222;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  overflow: hidden;
+  width: 320px;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.service-card.large img {
+  width: 320px;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 3px solid #4caf50;
+}
+
+.service-card.large h3 {
+  margin: 16px 0 10px 0;
+  color: #4caf50;
+  font-size: 2rem;
+}
+
+.service-card.large p {
+  font-size: 1.1rem;
+  padding: 0 12px 20px 12px;
+}

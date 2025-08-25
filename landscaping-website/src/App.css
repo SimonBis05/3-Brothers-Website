@@ -1,3 +1,7 @@
+body, .App {
+  background: rgba(34, 34, 34, 0.85)!important;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;

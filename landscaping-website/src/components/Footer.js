@@ -1,12 +1,34 @@
 import React from 'react';
+import './Footer.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 function Footer() {
   return (
-    <footer>
-      <div className="footer-content">
-        <p>&copy; {new Date().getFullYear()} 3 Brothers Landscaping</p>
-        <p>Contact us: info@3brotherslandscaping.com</p>
-        <p>Phone: (123) 456-7890</p>
+    <footer className="footer">
+      <div className="footer-section services">
+        <h2>Services</h2>
+        <ul>
+          <li>Interlock</li>
+          <li>Landscaping</li>
+          <li>Decks</li>
+          <li>Hardscaping</li>
+        </ul>
+      </div>
+      <div className="footer-section contact">
+        <h2>Contact Us</h2>
+        <p><strong>3 Brothers Landscaping</strong></p>
+        <p>Ottawa, ON</p>
+        <p><strong>Email:</strong> 3brothersottawalandscaping@gmail.com</p>
+        <p><strong>Phone:</strong> (613) 798-3968</p>
+        <div className="footer-social">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faFacebook} size="2x" />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faInstagram} size="2x" />
+          </a>
+        </div>
       </div>
     </footer>
   );
