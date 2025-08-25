@@ -1,34 +1,27 @@
 {
   "name": "landscaping-website",
   "version": "1.0.0",
-  "description": "A React website for a landscaping business.",
-  "main": "src/index.js",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.0",
+    "@fortawesome/free-brands-svg-icons": "^6.5.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.8.2",
+    "react-scripts": "5.0.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "keywords": [
-    "landscaping",
-    "react",
-    "website"
-  ],
-  "author": "Your Name",
-  "license": "MIT",
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^7.0.0",
-    "@fortawesome/free-brands-svg-icons": "^7.0.0",
-    "@fortawesome/react-fontawesome": "^3.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^7.8.2",
-    "react-scripts": "^5.0.1"
-  },
-  "homepage": ".",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yourusername/landscaping-website.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
