@@ -3,12 +3,12 @@
   "name": "3 Brothers Ottawa Landscaping",
   "icons": [
     {
-      "src": "logo.jpg",
+      "src": "logo.png",
       "sizes": "192x192",
       "type": "image/svg+xml"
     },
     {
-      "src": "logo.jpg",
+      "src": "logo.png",
       "sizes": "512x512",
       "type": "image/svg+xml"
     }

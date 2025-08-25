@@ -9,6 +9,9 @@ body {
 }
 
 .App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
@@ -16,6 +19,10 @@ body {
   background-color: #282c34;
   padding: 20px;
   color: white;
+}
+
+main {
+  flex: 1;
 }
 
 h1 {
@@ -44,7 +51,6 @@ h1 {
   background-color: #282c34;
   color: white;
   padding: 10px;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  position: relative;
 }

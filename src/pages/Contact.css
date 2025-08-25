@@ -1,23 +1,28 @@
 .contact-page {
-  min-height: calc(100vh - 160px); /* Subtract estimated header+footer height */
+  min-height: calc(100vh - 160px); /* desktop: subtract header+footer */
   display: flex;
-  align-items: flex-start; /* Align content to the top */
+  align-items: flex-start; /* keep content towards top on large screens */
   justify-content: center;
   background: rgba(34, 34, 34, 0.85);
-  padding-top: 130px; /* Add top padding */
+  padding-top: 130px; /* space under header on desktop */
   padding-bottom: 0;
+  box-sizing: border-box;
 }
 
 .contact-content {
-  background: rgba(34, 34, 34, 0.95);
-  max-width: 600px;
+  background: var(--panel-bg);
+  max-width: 640px;
   width: 100%;
   padding: 40px 32px;
   border-radius: 16px;
-  color: #fff;
+  color: var(--text);
   box-shadow: 0 2px 12px rgba(0,0,0,0.2);
   margin: 0 auto;
-  text-align: center; /* Center all text */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .contact-content h2 {

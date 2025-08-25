@@ -4,7 +4,8 @@
   justify-content: center;
   position: relative;
   background: #2e7d32;
-  padding: 32px 32px; /* Increased top/bottom padding */
+  padding: 32px 32px;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -19,4 +20,72 @@
 
 .header .navbar {
   margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .header {
+    padding: 28px 20px;
+  }
+  .logo {
+    height: 72px;
+    width: 72px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .logo {
+    position: relative;
+    transform: none;
+    height: 56px;
+    width: 56px;
+    margin: 0 8px;
+  }
+
+  .header .navbar {
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .header .navbar a {
+    font-size: 0.95rem;   
+    padding: 6px 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .social-icons {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    margin: 0 8px;
+  }
+
+  .social-icons a svg,
+  .social-icons img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .logo { height: 48px; width: 48px; }
+  .header .navbar a { font-size: 0.85rem; padding: 4px 6px; }
+  .social-icons a svg,
+  .social-icons img { width: 18px; height: 18px; }
 }
