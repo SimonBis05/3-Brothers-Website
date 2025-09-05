@@ -6,6 +6,19 @@ import landscapingImg from '../assets/lanscaping.jpg';
 import decksImg from '../assets/full_backyard.jpg';
 import hardscapingImg from '../assets/hardscaping.jpg';
 
+const imagesToPreload = [
+  backgroundImg,
+  interlockImg,
+  landscapingImg,
+  decksImg,
+  hardscapingImg,
+];
+
+imagesToPreload.forEach(src => {
+  const img = new window.Image();
+  img.src = src;
+});
+
 const services = [
   {
     name: 'Interlock',
