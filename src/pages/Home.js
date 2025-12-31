@@ -111,7 +111,7 @@ const Home = () => {
         }}
       >
         <div className="hero-content">
-          <h1>Make your dream projects come to life</h1>
+          <h1>Make your dream project come to life</h1>
           <Link to="/contact"><button className="hero-button">Get a Quote</button></Link>
         </div>
       </section>

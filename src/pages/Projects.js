@@ -64,7 +64,7 @@ const services = [
     images: designImages,
   },
   {
-    id: 'pressure-washing-resanding',
+    id: 'pressure-washing',
     title: 'Pressure Washing',
     images: pressureImages,
   },
