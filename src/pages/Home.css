@@ -151,6 +151,12 @@
   transition: background-color 0.3s, box-shadow 0.3s;
   font-weight: 600;
 }
+@media (max-width: 1200px) {
+  .hero-content h1 { font-size: 2.6rem; }
+  .hero-sub { font-size: 1rem; }
+  .hero { min-height: 50vh; }
+  .hero-button { font-size: 1.4rem; }
+}
 
 @media (max-width: 930px) {
   .hero-content h1 { font-size: 2.2rem; }
