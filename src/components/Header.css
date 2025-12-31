@@ -1,20 +1,29 @@
 .header {
+  --header-occupied-height: 132px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  background: #2e7d32;
-  padding: 32px 32px;
+  /* overlay the page and remain visible while scrolling */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  /* stronger green see-through base with reduced white overlay */
+  background-color: rgba(34, 34, 34, 0.82);
+  box-shadow: 0 6px 26px rgba(0,0,0,0.18);
+  padding: 26px 0; /* slightly larger bar */
+  min-height: 140px;
   box-sizing: border-box;
 }
 
 .logo {
   position: absolute;
-  left: 32px;
+  left: 28px;
   top: 50%;
   transform: translateY(-50%);
-  height: 80px;
-  width: 80px;
+  height: 370px; /* logo size kept; header will be slightly larger */
+  width: 370px;
   object-fit: contain;
 }
 
@@ -22,21 +31,59 @@
   margin: 0 auto;
 }
 
-.social-icons {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-  }
+/* leave nav link styling to Navbar.css (no header-level overrides) */
+.nav-link, .navbar a { color: inherit; }
+
+.header-right {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.phone-number {
+  margin: 0;
+}
+
+.phone-number a {
+  color: #8ED433;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.3rem;
+  transition: color 0.2s;
+}
+
+.phone-number a:hover { 
+  color: #a8e650; 
+}
+
+.social-icons { 
+  display: flex; 
+  gap: 15px; 
+  align-items: center; }
+  
+.social-icons svg { 
+  font-size: 1.6rem; 
+}
 
 @media (max-width: 992px) {
   .header {
-    padding: 28px 20px;
+    padding: 18px 14px;
+    --header-occupied-height: 116px;
+    min-height: 116px;
   }
   .logo {
-    height: 72px;
-    width: 72px;
-    left: 20px;
+    height: 88px;
+    width: 88px;
+    left: 18px;
   }
+
+  .header-right { position: static; transform: none; order: 4; display:flex; gap:12px; align-items:center; }
+
+  .phone-number a { font-size: 0.85rem; }
 }
 
 @media (max-width: 768px) {
@@ -51,8 +98,8 @@
   .logo {
     position: relative;
     transform: none;
-    height: 56px;
-    width: 56px;
+    height: 72px;
+    width: 72px;
     margin: 0 8px;
   }
 
@@ -68,12 +115,14 @@
   }
 
   .header .navbar a {
-    font-size: 0.95rem;   
+    font-size: 0.95rem;
     padding: 6px 8px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
   }
+
+  .phone-number { display: none; }
 
   .social-icons {
     display: flex;
@@ -86,6 +135,8 @@
     width: 20px;
     height: 20px;
   }
+
+  .social-icons svg { font-size: 20px; }
 }
 
 @media (max-width: 600px) {
@@ -95,7 +146,7 @@
 }
 
 @media (max-width: 420px) {
-  .logo { height: 48px; width: 48px; }
+  .logo { height: 64px; width: 64px; }
   .header .navbar a { font-size: 0.85rem; padding: 4px 6px; }
   .social-icons a svg,
   .social-icons img { width: 18px; height: 18px; }

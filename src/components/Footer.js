@@ -12,7 +12,8 @@ function Footer() {
           <li>Interlock</li>
           <li>Landscaping</li>
           <li>Decks</li>
-          <li>Hardscaping</li>
+          <li>Fences</li>
+          <li>Relevel & Repairs</li>
         </ul>
       </div>
       <div className="footer-section contact">

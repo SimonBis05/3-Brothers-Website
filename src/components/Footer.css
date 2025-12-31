@@ -8,6 +8,15 @@
   flex-wrap: wrap;
 }
 
+/* overlap upward into previous section (starts into the image) */
+.footer.overlap {
+  margin-top: -80px; /* pulls footer up into the previous section */
+  padding-top: 96px; /* keep inner spacing so content doesn't touch edge */
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -6px 30px rgba(0,0,0,0.35);
+}
+
 .footer-section {
   flex: 1;
   min-width: 250px;
@@ -16,7 +25,7 @@
 }
 
 .footer-section h2 {
-  border-bottom: 2px solid #4caf50;
+  border-bottom: 2px solid #8ED433;
   padding-bottom: 8px;
   margin-bottom: 16px;
   font-size: 1.5rem;
@@ -45,6 +54,12 @@
   .footer-social {
     gap: 16px;
   }
+
+  /* reduce overlap on small screens so footer doesn't cover too much */
+  .footer.overlap {
+    margin-top: -40px;
+    padding-top: 56px;
+  }
 }
 
 .footer-social a {
@@ -53,5 +68,5 @@
 }
 
 .footer-social a:hover {
-  color: #4caf50;
+  color: #8ED433;
 }

@@ -1,17 +1,24 @@
+/* @import url("https://use.typekit.net/ofq8gad.css"); */
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
   background-color: #f4f4f4;
+  font-family: "industry", sans-serif;
+  font-weight: 400; /* Regular */
+  font-style: normal;
 }
+
+
 :root{
   --bg: rgba(34,34,34,0.95);
   --panel-bg: rgba(34,34,34,0.95);
-  --accent: #4caf50;
+  --accent: #8ED433;
   --text: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
+  font-family: "industry", sans-serif;
+  font-weight: 700; /* Bold */
 }
 
 a {
