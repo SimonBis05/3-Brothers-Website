@@ -7,7 +7,7 @@ import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 const Header = () => {
   return (
     <header className="header">
-      <img src={logo} alt="Landscaping Logo" className="logo" />
+      <a href="/"><img src={logo} alt="Landscaping Logo" className="logo" /></a>
       <Navbar />
       <div className="header-right">
         <div className="phone-number">

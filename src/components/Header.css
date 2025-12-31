@@ -88,7 +88,7 @@
   .header {
     /* Explicitly cap the height */
     height: 80px; 
-    min-height: 80px;
+    /* min-height: 80px; */
     --header-occupied-height: 80px;
 
     /* Tighten layout */
@@ -136,8 +136,8 @@
     --header-occupied-height: 80px;
   }
   .logo {
-    height: 90px;
-    width: 90px;
+    height: 60px;
+    max-width: 120px;
   }
   .header .navbar {
     gap: 5px;
@@ -164,14 +164,17 @@
     --header-occupied-height: 70px;
   }
   .logo {
-    height: 75px;
-    width: 75px;
+    height: 50px;
+    max-width: 100px;
   }
   .social-icons {
     gap: 10px;
   }
   .header .navbar a {
     padding: 4px 6px;
+  }
+  .header{
+    height: 60px;
   }
 }
 
@@ -182,12 +185,15 @@
     --header-occupied-height: 65px;
   }
   .logo {
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    max-width: 75px;
   }
   .header .navbar a {
     font-size: 0.75rem; /* Slightly smaller for tight screens */
     padding: 3px 5px;
+  }
+  .header{
+    height: 50px;
   }
   .social-icons a svg,
   .social-icons img {
