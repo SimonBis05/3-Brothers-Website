@@ -152,16 +152,25 @@
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
-  .hero-content h1 { font-size: 2.25rem; }
+@media (max-width: 930px) {
+  .hero-content h1 { font-size: 2.2rem; }
   .hero-sub { font-size: 1rem; }
   .hero { min-height: 50vh; }
+  .hero-button { font-size: 1rem; }
 }
 
-@media (max-width: 480px) {
-  .hero-content h1 { font-size: 1.6rem; }
+@media (max-width: 620px) {
+  .hero-content h1 { font-size: 1.5rem; }
   .hero-sub { font-size: 0.95rem; }
   .hero { min-height: 40vh; }
+  .hero-button { font-size: 0.7rem; }
+}
+
+@media (max-width: 440px) {
+  .hero-content h1 { font-size: 1.2rem; }
+  .hero-sub { font-size: 0.95rem; }
+  .hero { min-height: 40vh; }
+  .hero-button { font-size: 0.6rem; }
 }
 
 /* Responsive grid: 3 cols tablet, 2 cols small, 1 col mobile */
@@ -179,6 +188,7 @@
   .home-content { padding: 18px; }
   .service-card.large img { height: 180px; }
   .service-card.large h3 { font-size: 1.4rem; }
+  .hero-content h1 { padding-top: 60px; }
 }
 
 /* spacing between hero and services */

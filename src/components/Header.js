@@ -1,4 +1,4 @@
-import logo from '../assets/Website Logo.svg';
+import logo from '../assets/Website_Logo.svg';
 import Navbar from './Navbar';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
