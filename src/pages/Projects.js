@@ -4,18 +4,18 @@ import './Projects.css';
 
 // dynamically import all images from each assets subfolder using webpack require.context
 const importAll = (r) => r.keys().sort().map(r);
-const interlockImages = importAll(require.context('../assets/Interlock', false, /\.(png|jpe?g)$/));
-const retainingImages = importAll(require.context('../assets/Retaining_Walls', false, /\.(png|jpe?g)$/));
-const landscapingImages = importAll(require.context('../assets/Landscaping', false, /\.(png|jpe?g)$/));
-const drivewaysImages = importAll(require.context('../assets/Driveways', false, /\.(png|jpe?g)$/));
-const stampedImages = importAll(require.context('../assets/Stamped_Concrete', false, /\.(png|jpe?g)$/));
-const firepitsImages = importAll(require.context('../assets/Fire_Pits', false, /\.(png|jpe?g)$/));
-const decksImages = importAll(require.context('../assets/Decks_&_Railings', false, /\.(png|jpe?g)$/));
-const fencesImages = importAll(require.context('../assets/Fences', false, /\.(png|jpe?g)$/));
-const designImages = importAll(require.context('../assets/3D_Design', false, /\.(png|jpe?g)$/));
-const pressureImages = importAll(require.context('../assets/Pressure_Washing_&_Resand', false, /\.(png|jpe?g)$/));
-const pergolasImages = importAll(require.context('../assets/Pergolas', false, /\.(png|jpe?g)$/));
-const relevelImages = importAll(require.context('../assets/Relevels_&_Repairs', false, /\.(png|jpe?g)$/));
+const interlockImages = importAll(require.context('../assets/Interlock', false, /\.(webp|jpe?g)$/));
+const retainingImages = importAll(require.context('../assets/Retaining_Walls', false, /\.(webp|jpe?g)$/));
+const landscapingImages = importAll(require.context('../assets/Landscaping', false, /\.(webp|jpe?g)$/));
+const drivewaysImages = importAll(require.context('../assets/Driveways', false, /\.(webp|jpe?g)$/));
+const stampedImages = importAll(require.context('../assets/Stamped_Concrete', false, /\.(webp|jpe?g)$/));
+const firepitsImages = importAll(require.context('../assets/Fire_Pits', false, /\.(webp|jpe?g)$/));
+const decksImages = importAll(require.context('../assets/Decks_&_Railings', false, /\.(webp|jpe?g)$/));
+const fencesImages = importAll(require.context('../assets/Fences', false, /\.(webp|jpe?g)$/));
+const designImages = importAll(require.context('../assets/3D_Design', false, /\.(webp|jpe?g)$/));
+const pressureImages = importAll(require.context('../assets/Pressure_Washing_&_Resand', false, /\.(webp|jpe?g)$/));
+const pergolasImages = importAll(require.context('../assets/Pergolas', false, /\.(webp|jpe?g)$/));
+const relevelImages = importAll(require.context('../assets/Relevels_&_Repairs', false, /\.(webp|jpe?g)$/));
 
 const services = [
   {

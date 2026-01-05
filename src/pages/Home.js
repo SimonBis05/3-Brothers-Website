@@ -1,18 +1,18 @@
 import { Link } from 'react-router-dom';
 import './Home.css';
 
-import interlockImg from '../assets/Interlock/interlock_01.png';
-import landscapingImg from '../assets/Landscaping/landscaping_01.png';
-import decksImg from '../assets/Decks_&_Railings/deck_01.png';
-import wallImg from '../assets/Retaining_Walls/retaining_01.png';
-import stampedPadImg from '../assets/Stamped_Concrete/stamped_01.png';
-import pergolaImg from '../assets/Pergolas/pergola_01.png';
-import repairImg from '../assets/Relevels_&_Repairs/relevel_01.png';
-import drivewayImg from '../assets/Driveways/driveway_01.png';
-import fenceImg from '../assets/Fences/fence_01.png';
-import pressureImg from '../assets/Pressure_Washing_&_Resand/pressure_01.png';
-import firepitImg from '../assets/Fire_Pits/fire_01.png';
-import designImg from '../assets/3D_Design/3d_design_01.png';
+import interlockImg from '../assets/Interlock/interlock_01.webp';
+import landscapingImg from '../assets/Landscaping/landscaping_01.webp';
+import decksImg from '../assets/Decks_&_Railings/deck_01.webp';
+import wallImg from '../assets/Retaining_Walls/retaining_01.webp';
+import stampedPadImg from '../assets/Stamped_Concrete/stamped_01.webp';
+import pergolaImg from '../assets/Pergolas/pergola_01.webp';
+import repairImg from '../assets/Relevels_&_Repairs/relevel_01.webp';
+import drivewayImg from '../assets/Driveways/driveway_01.webp';
+import fenceImg from '../assets/Fences/fence_01.webp';
+import pressureImg from '../assets/Pressure_Washing_&_Resand/pressure_01.webp';
+import firepitImg from '../assets/Fire_Pits/fire_01.webp';
+import designImg from '../assets/3D_Design/3d_design_01.webp';
 
 const imagesToPreload = [
   interlockImg,
