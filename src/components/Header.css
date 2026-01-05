@@ -22,8 +22,8 @@
   left: 28px;
   top: 50%;
   transform: translateY(-50%);
-  height: 370px; /* logo size kept; header will be slightly larger */
-  width: 370px;
+  height: 340px; /* logo size kept; header will be slightly larger */
+  width: 340px;
   object-fit: contain;
 }
 
@@ -77,8 +77,8 @@
     min-height: 70px;
   }
   .logo {
-    height: 160px; /* Reduced from 200px for better fit on laptops */
-    width: 160px;
+    height: 140px; /* Reduced from 200px for better fit on laptops */
+    width: 140px;
   }
   .phone-number a { font-size: 0.9rem; }
 }
