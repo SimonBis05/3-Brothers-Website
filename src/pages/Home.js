@@ -99,6 +99,15 @@ const services = [
 
 const slug = (name) => name.replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '').toLowerCase();
 
+const getServiceRoute = (name) => {
+  const interlockServices = ['Interlock', 'Retaining Walls', 'Driveways', 'Fire Pits', '3D Design', 'Pressure Washing', 'Relevel & Repairs'];
+  if (interlockServices.includes(name)) return '/interlock';
+  if (name === 'Landscaping' || name === 'Pergolas') return '/landscaping';
+  if (name === 'Decks') return '/decks';
+  if (name === 'Fences') return '/fences';
+  return `/projects#${slug(name)}`; // fallback for others like Stamped Concrete
+};
+
 const Home = () => {
   return (
     <div className="home">
@@ -122,7 +131,7 @@ const Home = () => {
           <div className="services-list">
             {console.log(services)}
             {services.map(service => (
-              <Link key={service.name} to={`/projects#${slug(service.name)}`} className="service-link">
+              <Link key={service.name} to={getServiceRoute(service.name)} className="service-link">
                 <div className="service-card large" >
                   <img src={service.img} alt={service.name} />
                   <div>

@@ -128,12 +128,11 @@
   }
 }
 
-/* --- Standard Tablets (768px) --- */
-/* Added this middle step so it doesn't jump straight from 1060 to 600 */
 @media (max-width: 700px) {
   .header {
     padding: 8px 12px;
     --header-occupied-height: 80px;
+    overflow: visible;
   }
   .logo {
     height: 60px;
@@ -162,6 +161,7 @@
 @media (max-width: 600px) {
   .header {
     --header-occupied-height: 70px;
+    overflow: visible;
   }
   .logo {
     height: 50px;
@@ -183,6 +183,7 @@
   .header {
     padding: 5px 10px;
     --header-occupied-height: 65px;
+    overflow: visible;
   }
   .logo {
     height: 40px;
