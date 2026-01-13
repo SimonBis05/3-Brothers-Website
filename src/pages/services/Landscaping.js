@@ -53,7 +53,7 @@ const Landscaping = () => {
           </Link>
         </div>
 
-        <div className="cta"><a href="/contact" className="btn">Request a free estimate</a></div>
+        <div className="cta"><a href="/contact-us" className="btn">Request a free estimate</a></div>
       </section>
     </div>
   );

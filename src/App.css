@@ -26,20 +26,7 @@ main {
 
 /* ensure page content starts below the fixed header */
 main {
-  padding-top: 140px; /* default header occupied space */
-}
-
-@media (max-width: 1366px) {
-  main { padding-top: 110px; }
-}
-@media (max-width: 900px) {
-  main { padding-top: 80px; }
-}
-@media (max-width: 700px) {
-  main { padding-top: 80px; }
-}
-@media (max-width: 600px) {
-  main { padding-top: 70px; }
+  padding-top: var(--header-occupied-height, 140px);
 }
 
 h1 {
@@ -54,7 +41,7 @@ h1 {
 
 .navbar a {
   color: white;
-  padding: 14px 20px;
+  /* padding: 14px 20px; */
   text-decoration: none;
   text-align: center;
 }

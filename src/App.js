@@ -29,7 +29,7 @@ function AppContent() {
           <Route path="/decks" element={<Decks />} />
           <Route path="/landscaping" element={<Landscaping />} />
           <Route path="/fences" element={<Fences />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact-us" element={<Contact />} />
         </Routes>
       </main>
       <Footer />

@@ -38,7 +38,7 @@ const Fences = () => {
         <p><strong>Chain Link Fences:</strong> Affordable, durable, and versatile—ideal for backyards, pools, and commercial areas.</p>
         <p><strong>Glass Fences:</strong> Sleek and modern, offering openness and sophistication for decks, patios, and pool areas.</p>
 
-        <div className="cta"><a href="/contact" className="btn">Request a free estimate</a></div>
+        <div className="cta"><a href="/contact-us" className="btn">Request a free estimate</a></div>
       </section>
     </div>
   );
