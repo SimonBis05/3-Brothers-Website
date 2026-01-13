@@ -1,19 +1,37 @@
+/* ============================================
+   STANDARDIZED RESPONSIVE BREAKPOINTS
+   ============================================
+   
+   Screen Size Categories:
+   - Small (≤ 400px): Logo.png, Phone icon only, Smallest fonts
+   - Medium (≤ 700px): Full logo, Full phone number, Small fonts
+   - Large (≤ 1100px): Full logo, Full phone number, Medium fonts
+   - Extra Large (> 1100px): Full logo, Full phone number, Large fonts
+   
+   ============================================ */
+
+/* ============================================
+   BASE STYLES (Extra Large: > 1100px)
+   ============================================ */
+
+:root {
+  --header-occupied-height: 130px;
+}
+
 .header {
-  --header-occupied-height: 132px;
+  --header-occupied-height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* overlay the page and remain visible while scrolling */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  /* stronger green see-through base with reduced white overlay */
   background-color: rgba(34, 34, 34, 0.82);
   box-shadow: 0 6px 26px rgba(0,0,0,0.18);
-  padding: 26px 0; /* slightly larger bar */
-  min-height: 140px;
+  padding: 26px 0;
+  min-height: 130px;
   box-sizing: border-box;
 }
 
@@ -22,7 +40,7 @@
   left: 28px;
   top: 50%;
   transform: translateY(-50%);
-  height: 340px; /* logo size kept; header will be slightly larger */
+  height: 340px;
   width: 340px;
   object-fit: contain;
 }
@@ -31,8 +49,92 @@
   margin: 0 auto;
 }
 
-/* leave nav link styling to Navbar.css (no header-level overrides) */
-.nav-link, .navbar a { color: inherit; }
+.navbar {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+}
+
+.nav-link {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.8rem;
+  padding: 15px 20px;
+  transition: background-color 260ms ease, color 260ms ease, transform 120ms ease;
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  position: relative;
+  z-index: 3;
+  opacity: 1;
+  background-clip: padding-box;
+}
+
+.nav-link:hover {
+  color: #f1f1f1;
+}
+
+.nav-link.active:hover {
+  background: transparent;
+  color: #8ED433;
+}
+
+.nav-link.active {
+  background: transparent;
+  color: #8ED433;
+}
+
+.services-dropdown {
+  position: relative;
+}
+
+.services-toggle {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.8rem;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  transition: background-color 260ms ease, color 260ms ease, transform 120ms ease;
+}
+
+.services-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  background: rgba(10,10,10,0.95);
+  padding: 6px 0;
+  min-width: 220px;
+  border-radius: 4px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  z-index: 1001;
+}
+
+.services-dropdown:hover .services-menu {
+  display: flex;
+}
+
+.services-menu .nav-link {
+  display: block;
+  padding: 10px 16px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.services-menu .nav-link:hover {
+  background: rgba(255,255,255,0.03);
+  color: #8ED433;
+}
 
 .header-right {
   position: absolute;
@@ -46,9 +148,12 @@
 
 .phone-number {
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.phone-number a {
+.phone-text {
   color: #8ED433;
   text-decoration: none;
   font-weight: 600;
@@ -56,154 +161,264 @@
   transition: color 0.2s;
 }
 
-.phone-number a:hover { 
-  color: #a8e650; 
+.phone-text:hover {
+  color: #a8e650;
 }
 
-.social-icons { 
-  display: flex; 
-  gap: 15px; 
-  align-items: center; }
-  
-.social-icons svg { 
-  font-size: 1.6rem; 
+.phone-icon {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+  display: none;
 }
 
-/* --- Desktop / Large Tablet (1366px) --- */
-@media (max-width: 1366px) {
+.phone-icon:hover {
+  color: #a8e650;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.social-icons svg {
+  font-size: 1.6rem;
+}
+
+.social-icons a {
+  color: #fff;
+  transition: color 0.2s;
+}
+
+.social-icons a:hover {
+  color: #a8e650;
+}
+
+/* ============================================
+   LARGE SCREENS (≤ 1100px)
+   ============================================ */
+
+@media (max-width: 1500px) {
   .header {
-    padding: 15px 20px;
-    --header-occupied-height: 110px;
-    min-height: 70px;
+    padding: 20px 0;
+    --header-occupied-height: 100px;
+    min-height: 100px;
+    background-color: rgba(34, 34, 34, 0.82);
+    box-shadow: 0 6px 26px rgba(0,0,0,0.18);
   }
+
+  :root { --header-occupied-height: 100px; }
+
   .logo {
-    height: 140px; /* Reduced from 200px for better fit on laptops */
-    width: 140px;
-  }
-  .phone-number a { font-size: 0.9rem; }
-}
-
-/* --- Small Laptops / Landscape Tablets (1060px) --- */
-@media (max-width: 900px) {
-  .header {
-    /* Explicitly cap the height */
-    height: 80px; 
-    /* min-height: 80px; */
-    --header-occupied-height: 80px;
-
-    /* Tighten layout */
-    padding: 0 15px; 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    overflow: hidden; /* Prevents children from pushing the height out */
+    height: 200px;
+    width: 200px;
+    left: 20px;
   }
 
-  .logo {
-    height: 70px; /* Shrunk from 120px to keep header slim */
-    /* width: auto;  Maintains aspect ratio */
-    margin: 0;
-  }
-
-  .header .navbar {
-    gap: 8px;
-    /* Ensure the navbar doesn't wrap to a second line */
-    flex-wrap: nowrap; 
-  }
-
-  .header .navbar a {
-    font-size: 0.9rem;
-    padding: 4px 8px;
-  }
-
-  .social-icons {
-    gap: 10px;
-  }
-
-  .social-icons a svg,
-  .social-icons img {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-/* --- Standard Tablets (768px) --- */
-/* Added this middle step so it doesn't jump straight from 1060 to 600 */
-@media (max-width: 700px) {
-  .header {
+  .nav-link {
+    font-size: 1.5rem;
     padding: 8px 12px;
+  }
+
+  .services-toggle {
+    font-size: 1.5rem;
+    padding: 8px 12px;
+  }
+
+  .phone-text {
+    font-size: 1.1rem;
+  }
+
+  .phone-icon {
+    font-size: 1.2rem;
+  }
+
+  .social-icons svg {
+    font-size: 1.4rem;
+  }
+
+  .header-right {
+    right: 20px;
+    gap: 15px;
+  }
+}
+
+/* ============================================
+   MEDIUM SCREENS (≤ 700px)
+   Full phone number visible, small fonts
+   ============================================ */
+
+@media (max-width: 1000px) {
+  .header {
+    padding: 12px 0;
     --header-occupied-height: 80px;
+    min-height: 80px;
+    height: auto;
+    background-color: rgba(34, 34, 34, 0.82);
+    box-shadow: 0 6px 26px rgba(0,0,0,0.18);
   }
+
+  :root { --header-occupied-height: 80px; }
+
   .logo {
-    height: 60px;
-    max-width: 120px;
+    height: 120px;
+    width: 120px;
+    left: 12px;
   }
-  .header .navbar {
-    gap: 5px;
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 5px 12px;
   }
-  .header .navbar a {
-    font-size: 0.85rem;
-    padding: 5px 8px;
+
+  .services-toggle {
+    font-size: 0.9rem;
+    padding: 5px 5px 5px 12px;
   }
+
+  .services-menu {
+    min-width: 160px;
+    padding: 4px 0;
+  }
+
+  .services-menu .nav-link {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  .phone-text {
+    font-size: 0.95rem;
+  }
+
+  .phone-icon {
+    display: none;
+  }
+
   .social-icons {
+    gap: 10px;
+  }
+
+  .social-icons svg {
+    font-size: 1.2rem;
+  }
+
+  .header-right {
+    right: 12px;
     gap: 12px;
   }
-  .phone-number { 
-    display: none; 
-  }
-  .hero-button {
-    padding: 6px 12px;
-    font-size: 0.85rem;
-  }
 }
 
-/* --- Large Phones (600px) --- */
-@media (max-width: 600px) {
-  .header {
-    --header-occupied-height: 70px;
-  }
-  .logo {
-    height: 50px;
-    max-width: 100px;
-  }
-  .social-icons {
-    gap: 10px;
-  }
-  .header .navbar a {
-    padding: 4px 6px;
-  }
-  .header{
-    height: 60px;
-  }
-}
+/* ============================================
+   SMALL SCREENS (≤ 400px)
+   Logo.png only, Phone icon only, Smallest fonts
+   ============================================ */
 
-/* --- Small Phones (420px) --- */
-@media (max-width: 420px) {
+@media (max-width: 730px) {
   .header {
-    padding: 5px 10px;
-    --header-occupied-height: 65px;
+    padding: 8px 0;
+    --header-occupied-height: 60px;
+    min-height: 60px;
+    height: auto;
+    background-color: rgba(34, 34, 34, 0.82);
+    box-shadow: 0 6px 26px rgba(0,0,0,0.18);
   }
+
+  :root { --header-occupied-height: 60px; }
+
   .logo {
-    height: 40px;
-    max-width: 75px;
+    height: 20px;
+    width: 20px;
+    left: 8px;
+    content: url('../../public/logo.png');
   }
-  .header .navbar a {
-    font-size: 0.75rem; /* Slightly smaller for tight screens */
-    padding: 3px 5px;
+
+  /* tighten spacing between nav items on small screens */
+  .navbar {
+    gap: 2px;
   }
-  .header{
-    height: 50px;
+
+  .nav-link {
+    font-size: 0.8rem;
+    padding: 3px 15px;
   }
-  .social-icons a svg,
-  .social-icons img {
-    width: 18px;
-    height: 18px;
+
+  .services-toggle {
+    font-size: 0.8rem;
+    padding: 3px 3px 3px 15px;
   }
-  .hero-button {
-    padding: 4px 8px;
+
+  .phone-text {
+    display: none;
+  }
+
+  .phone-icon {
+    display: block;
+    font-size: 1rem;
+  }
+
+  .services-menu .nav-link {
     font-size: 0.7rem;
-    white-space: nowrap;
-    letter-spacing: 0px; /* Reduces width slightly */
+    padding: 8px 12px;
+  }
+
+  .services-menu {
+    min-width: 130px;
+    padding: 4px 0;
+  }
+
+  .social-icons {
+    gap: 8px;
+  }
+
+  .social-icons svg {
+    font-size: 1rem;
+  }
+
+  .header-right {
+    right: 8px;
+    gap: 8px;
+  }
+}
+
+/* ============================================
+   EXTRA SMALL SCREENS (< 400px)
+   Reduced navbar font size and padding
+   ============================================ */
+
+@media (max-width: 480px) {
+  .header {
+    padding: 6px 0;
+    --header-occupied-height: 50px;
+    min-height: 50px;
+    height: auto;
+    background-color: rgba(34, 34, 34, 0.82);
+    box-shadow: 0 6px 26px rgba(0,0,0,0.18);
+  }
+  :root { --header-occupied-height: 50px; }
+  
+  .nav-link {
+    font-size: 0.6rem;
+    padding: 5px 5px;
+  }
+
+  .services-toggle {
+    font-size: 0.6rem;
+    padding: 5px 3px 6px 5px;
+  }
+
+  .services-menu .nav-link {
+    font-size: 0.50rem;
+    padding: 6px 10px;
+  }
+
+  .services-menu {
+    min-width: 110px;
+    padding: 3px 0;
+  }
+  /* further reduce gap on very small screens */
+  .navbar {
+    gap: 1px;
   }
 }

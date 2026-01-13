@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import './Home.css';
 
 import interlockImg from '../assets/Interlock/interlock_01.webp';
@@ -99,9 +100,23 @@ const services = [
 
 const slug = (name) => name.replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '').toLowerCase();
 
+const getServiceRoute = (name) => {
+  const interlockServices = ['Interlock', 'Retaining Walls', 'Driveways', 'Fire Pits', '3D Design', 'Pressure Washing', 'Relevel & Repairs'];
+  if (interlockServices.includes(name)) return '/interlock';
+  if (name === 'Landscaping' || name === 'Pergolas') return '/landscaping';
+  if (name === 'Decks') return '/decks';
+  if (name === 'Fences') return '/fences';
+  return `/projects#${slug(name)}`; // fallback for others like Stamped Concrete
+};
+
 const Home = () => {
   return (
     <div className="home">
+      <Helmet>
+        <title>Ottawa Landscaping Company | 3 Brothers Ottawa Landscaping</title>
+        <meta name="description" content="3 Brothers Ottawa Landscaping provides professional landscaping, interlock, decks, and fencing services in Ottawa, ON. Free estimates. Call (613) 798-3968." />
+        <link rel="canonical" href="https://www.3brothersottawalandscaping.ca/" />
+      </Helmet>
       <section
         className="hero"
         style={{
@@ -112,7 +127,7 @@ const Home = () => {
       >
         <div className="hero-content">
           <h1>Make your dream project come to life</h1>
-          <Link to="/contact"><button className="hero-button">Get a Quote</button></Link>
+          <Link to="/contact-us"><button className="hero-button">Get a Quote</button></Link>
         </div>
       </section>
 
@@ -120,11 +135,10 @@ const Home = () => {
         <div className="home-content">
           <h1>Our Services</h1>
           <div className="services-list">
-            {console.log(services)}
             {services.map(service => (
-              <Link key={service.name} to={`/projects#${slug(service.name)}`} className="service-link">
+              <Link key={service.name} to={getServiceRoute(service.name)} className="service-link">
                 <div className="service-card large" >
-                  <img src={service.img} alt={service.name} />
+                  <img src={service.img} alt={`${service.name} - 3 Brothers Ottawa Landscaping`} />
                   <div>
                     <h3>{service.name}</h3>
                     <p>{service.desc}</p>

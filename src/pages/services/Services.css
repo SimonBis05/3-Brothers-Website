@@ -1,0 +1,118 @@
+.service-page {
+  color: #fff;
+  background: #222;
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+  padding: 36px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+.service-hero {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.service-hero h1 {
+  margin: 0 0 .5rem 0;
+  color: #8ED433;
+  font-size: 2.6rem;
+}
+.service-content h2 { margin-top: 1rem; color: #e6e6e6 }
+.service-content p { line-height: 1.8; color: #ddd }
+.service-content strong { color: #8ED433; }
+
+.no-bullets {
+  list-style: none;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.cta { margin-top: 1.5rem; }
+.btn { background: #8ED433; padding: 10px 16px; color: #191919; text-decoration: none; border-radius: 8px; font-weight: 700; }
+
+.calculator {
+  background: #333;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.calculator label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.calculator input[type="number"] {
+  width: 100px;
+  padding: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.calculator input[type="range"] {
+  width: 100%;
+  max-width: 300px;
+}
+.calculator p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: white;
+}
+.calculator p:last-child {
+  color: #8ED433;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.patterns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.pattern {
+  text-align: center;
+}
+
+.pattern img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.full-fit {
+  object-fit: contain;
+}
+
+.pattern p {
+  margin: 0;
+  font-weight: bold;
+  color: #8ED433;
+}
+
+@media (max-width: 900px) {
+  .service-page { padding: 22px; border-radius: 8px; }
+  .service-hero h1 { font-size: 1.8rem }
+  .gallery { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .gallery img { width: 100%; max-width: 300px; }
+  .patterns { grid-template-columns: repeat(2, 1fr); }
+  .content-grid { grid-template-columns: 1fr; }
+}

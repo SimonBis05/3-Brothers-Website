@@ -1,6 +1,6 @@
 .contact-page {
   min-height: 70vh;
-  padding: calc(var(--header-occupied-height, 132px) + 24px) 32px 40px;
+  padding: calc(var(--header-occupied-height, 32px) + 24px) 32px 40px;
   background: rgba(35, 32, 32, 0.85);
   color: #fff;
 }

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Disallow private or admin pages if any
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Sitemap location
+Sitemap: https://www.3brothersottawalandscaping.ca/sitemap.xml

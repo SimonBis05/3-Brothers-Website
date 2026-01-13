@@ -42,6 +42,16 @@
   font-size: 1.1rem;
 }
 
+.footer-section.services ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-section.services ul li a:hover {
+  color: #a8e650;
+}
+
 .footer-social {
   margin-top: 16px;
   display: flex;
@@ -69,4 +79,30 @@
 
 .footer-social a:hover {
   color: #8ED433;
+}
+
+/* Contact section with icons */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  justify-content: center;
+}
+
+.contact-icon {
+  color: #8ED433;
+  min-width: 20px;
+  text-align: center;
+}
+
+.contact-item a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-item a:hover {
+  color: #a8e650;
 }
