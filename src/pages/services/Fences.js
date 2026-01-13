@@ -1,16 +1,50 @@
 import React from 'react';
-import './Interlock.css';
+import './Services.css';
 import { Helmet } from 'react-helmet-async';
 
 const Fences = () => {
-  const canonical = 'https://yourdomain.com/fences';
+  const canonical = 'https://www.3brothersottawalandscaping.ca/fences';
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Fences",
-    "provider": { "@type": "LocalBusiness", "name": "3 Brothers Landscaping" },
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "3 Brothers Landscaping",
+      "telephone": "+1-613-798-3968",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ottawa",
+        "addressRegion": "ON"
+      }
+    },
     "areaServed": "Ottawa, ON",
     "description": "Fencing installation and repair — wood, vinyl, and metal options."
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.3brothersottawalandscaping.ca/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://www.3brothersottawalandscaping.ca/projects"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Fences",
+        "item": "https://www.3brothersottawalandscaping.ca/fences"
+      }
+    ]
   };
 
   return (
@@ -20,6 +54,7 @@ const Fences = () => {
         <meta name="description" content="Fence installation and repair in Ottawa — privacy, decorative and security fences." />
         <link rel="canonical" href={canonical} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
       </Helmet>
 
       <header className="service-hero">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import './Contact.css';
 import interlockImg from '../assets/Interlock/interlock_01.webp';
 import landscapingImg from '../assets/Landscaping/landscaping_01.webp';
@@ -65,6 +66,11 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
+      <Helmet>
+        <title>Contact Us - Get Free Quote | 3 Brothers Ottawa Landscaping</title>
+        <meta name="description" content="Contact 3 Brothers Ottawa Landscaping for a free landscaping quote. Call (613) 798-3968 or fill out our form. We serve Ottawa, Ontario." />
+        <link rel="canonical" href="https://www.3brothersottawalandscaping.ca/contact-us" />
+      </Helmet>
       <div className="contact-container">
         {/* Left Section: Contact Info */}
         <section className="contact-info-section">
@@ -173,11 +179,15 @@ const Contact = () => {
       <div className="contact-projects">
         <h3>Our Projects</h3>
         <div className="projects-grid">
-          {projectImages.map((img, idx) => (
-            <div key={idx} className="project-thumb">
-              <img src={img} alt={`Project ${idx + 1}`} />
-            </div>
-          ))}
+          {projectImages.map((img, idx) => {
+            const projectTypes = ['Interlock Paving', 'Landscaping', 'Decks & Railings', 'Retaining Walls', 'Stamped Concrete', 'Pergolas', 'Relevel & Repairs', 'Driveways', 'Fences', 'Pressure Washing'];
+            const projectType = projectTypes[idx % projectTypes.length];
+            return (
+              <div key={idx} className="project-thumb">
+                <img src={img} alt={`${projectType} project example - 3 Brothers Ottawa Landscaping`} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import './Home.css';
 
 import interlockImg from '../assets/Interlock/interlock_01.webp';
@@ -111,6 +112,11 @@ const getServiceRoute = (name) => {
 const Home = () => {
   return (
     <div className="home">
+      <Helmet>
+        <title>Ottawa Landscaping Company | 3 Brothers Ottawa Landscaping</title>
+        <meta name="description" content="3 Brothers Ottawa Landscaping provides professional landscaping, interlock, decks, and fencing services in Ottawa, ON. Free estimates. Call (613) 798-3968." />
+        <link rel="canonical" href="https://www.3brothersottawalandscaping.ca/" />
+      </Helmet>
       <section
         className="hero"
         style={{
@@ -129,11 +135,10 @@ const Home = () => {
         <div className="home-content">
           <h1>Our Services</h1>
           <div className="services-list">
-            {console.log(services)}
             {services.map(service => (
               <Link key={service.name} to={getServiceRoute(service.name)} className="service-link">
                 <div className="service-card large" >
-                  <img src={service.img} alt={service.name} />
+                  <img src={service.img} alt={`${service.name} - 3 Brothers Ottawa Landscaping`} />
                   <div>
                     <h3>{service.name}</h3>
                     <p>{service.desc}</p>

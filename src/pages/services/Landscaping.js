@@ -1,20 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Interlock.css';
+import './Services.css';
 import { Helmet } from 'react-helmet-async';
 import landscaping01 from '../../assets/Landscaping/landscaping_01.webp';
 import landscaping02 from '../../assets/Landscaping/landscaping_02.webp';
 import landscaping04 from '../../assets/Landscaping/landscaping_04.webp';
 
 const Landscaping = () => {
-  const canonical = 'https://yourdomain.com/landscaping';
+  const canonical = 'https://www.3brothersottawalandscaping.ca/landscaping';
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Landscaping",
-    "provider": { "@type": "LocalBusiness", "name": "3 Brothers Landscaping" },
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "3 Brothers Landscaping",
+      "telephone": "+1-613-798-3968",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ottawa",
+        "addressRegion": "ON"
+      }
+    },
     "areaServed": "Ottawa, ON",
     "description": "Professional landscaping services including garden beds, mulch, sodding, and lawn care in Ottawa."
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.3brothersottawalandscaping.ca/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://www.3brothersottawalandscaping.ca/projects"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Landscaping",
+        "item": "https://www.3brothersottawalandscaping.ca/landscaping"
+      }
+    ]
   };
 
   return (
@@ -24,6 +58,7 @@ const Landscaping = () => {
         <meta name="description" content="Landscaping services: garden beds, mulch, sodding, lawn care. Transform your outdoor space in Ottawa." />
         <link rel="canonical" href={canonical} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
       </Helmet>
 
       <header className="service-hero">
@@ -43,13 +78,13 @@ const Landscaping = () => {
         <h3>Gallery</h3>
         <div className="gallery">
           <Link to="/projects#landscaping">
-            <img src={landscaping01} alt="Landscaping project example" />
+            <img src={landscaping01} alt="Beautiful landscaping project in Ottawa" />
           </Link>
           <Link to="/projects#landscaping">
-            <img src={landscaping02} alt="Garden bed example" />
+            <img src={landscaping02} alt="Custom garden bed design and installation" />
           </Link> 
           <Link to="/projects#landscaping">
-            <img src={landscaping04} alt="Lawn installation example" />
+            <img src={landscaping04} alt="Professional sod installation for lush lawns" />
           </Link>
         </div>
 

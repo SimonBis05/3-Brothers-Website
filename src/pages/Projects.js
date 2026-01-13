@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import './Projects.css';
 
 // dynamically import all images from each assets subfolder using webpack require.context
@@ -87,16 +88,16 @@ const Projects = () => {
   const { hash } = useLocation();
 
   useEffect(() => {
-    if (hash) {
-      // Small delay to ensure the page has rendered before scrolling
-      setTimeout(() => {
-        const id = hash.replace('#', '');
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 0);
-    }
+  if (hash) {
+    // Small delay to ensure the page has rendered before scrolling
+    setTimeout(() => {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 0);
+  }
   }, [hash]);
 
   const openLightbox = (serviceIdx, imgIdx) => setLightbox({ open: true, serviceIdx, imgIdx });
@@ -137,8 +138,13 @@ const Projects = () => {
   };
 
   return (
-    <div className="Projects-page">
-      <h2>Our Projects</h2>
+    <div className="projects-page">
+      <Helmet>
+        <title>Project Gallery - See Our Work | 3 Brothers Ottawa Landscaping</title>
+        <meta name="description" content="Browse our landscaping project portfolio including interlock patios, decks, fences, retaining walls, and more in Ottawa. View before & after photos." />
+        <link rel="canonical" href="https://www.3brothersottawalandscaping.ca/projects" />
+      </Helmet>
+      <h1 style={{ textAlign: 'center', color: '#8ED433', marginBottom: '30px', marginTop: '20px' }}>Our Project Gallery</h1>
       {services.map((s, si) => {
         const len = s.images.length;
         const start = carouselStart[si] || 0;
@@ -171,7 +177,7 @@ const Projects = () => {
           <button className="lb-close" onClick={(e) => { e.stopPropagation(); closeLightbox(); }}>✕</button>
           <button className="lb-prev" onClick={(e) => { e.stopPropagation(); prev(); }}>‹</button>
           <div className="lb-content" onClick={(e) => e.stopPropagation()}>
-            <img src={services[lightbox.serviceIdx].images[lightbox.imgIdx]} alt="Enlarged" />
+            <img src={services[lightbox.serviceIdx].images[lightbox.imgIdx]} alt={`${services[lightbox.serviceIdx].title} project photo - view enlarged`} />
             <div className="lb-caption">{services[lightbox.serviceIdx].title}</div>
           </div>
           <button className="lb-next" onClick={(e) => { e.stopPropagation(); next(); }}>›</button>

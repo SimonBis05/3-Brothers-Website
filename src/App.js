@@ -24,7 +24,7 @@ function AppContent() {
       <main className="App-main">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Projects" element={<Projects />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/interlock" element={<Interlock />} />
           <Route path="/decks" element={<Decks />} />
           <Route path="/landscaping" element={<Landscaping />} />

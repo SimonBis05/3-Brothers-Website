@@ -1,20 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Interlock.css';
+import './Services.css';
 import { Helmet } from 'react-helmet-async';
 import deck01 from '../../assets/Decks_&_Railings/deck_01.webp';
 import deck03 from '../../assets/Decks_&_Railings/deck_03.webp';
 import deck04 from '../../assets/Decks_&_Railings/deck_04.webp';
 
 const Decks = () => {
-  const canonical = 'https://yourdomain.com/decks';
+  const canonical = 'https://www.3brothersottawalandscaping.ca/decks';
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Decking & Railings",
-    "provider": { "@type": "LocalBusiness", "name": "3 Brothers Landscaping" },
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "3 Brothers Landscaping",
+      "telephone": "+1-613-798-3968",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ottawa",
+        "addressRegion": "ON"
+      }
+    },
     "areaServed": "Ottawa, ON",
     "description": "Custom decking and railings installations in Ottawa."
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.3brothersottawalandscaping.ca/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://www.3brothersottawalandscaping.ca/projects"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Decks & Railings",
+        "item": "https://www.3brothersottawalandscaping.ca/decks"
+      }
+    ]
   };
 
   return (
@@ -24,6 +58,7 @@ const Decks = () => {
         <meta name="description" content="Custom decks and railings built in Ottawa. Durable materials and expert installation." />
         <link rel="canonical" href={canonical} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
       </Helmet>
 
       <header className="service-hero">
@@ -41,13 +76,13 @@ const Decks = () => {
         <h3>Gallery</h3>
         <div className="gallery">
           <Link to="/projects#decks">
-            <img src={deck01} alt="Deck project example" />
+            <img src={deck01} alt="Custom deck construction in Ottawa" />
           </Link>
           <Link to="/projects#decks">
-            <img src={deck03} alt="Decking and railings example" />
+            <img src={deck03} alt="Decking and metal railings installation example" />
           </Link> 
           <Link to="/projects#decks">
-            <img src={deck04} alt="Custom deck installation" />
+            <img src={deck04} alt="Professional composite deck with railings" />
           </Link>
         </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Interlock.css';
+import './Services.css';
 import { Helmet } from 'react-helmet-async';
 import basketweave from '../../assets/Services_Images/basketweave.webp';
 import herringbone from '../../assets/Services_Images/herringbone.webp';
@@ -12,7 +12,7 @@ import relevel03 from '../../assets/Relevels_&_Repairs/relevel_03.webp';
 
 
 const Interlock = () => {
-  const canonical = 'https://yourdomain.com/interlock';
+  const canonical = 'https://www.3brothersottawalandscaping.ca/interlock';
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -20,7 +20,7 @@ const Interlock = () => {
     "provider": {
       "@type": "LocalBusiness",
       "name": "3 Brothers Landscaping",
-      "telephone": "+1-613-XXX-XXXX",
+      "telephone": "+1-613-798-3968",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Ottawa",
@@ -29,6 +29,31 @@ const Interlock = () => {
     },
     "areaServed": "Ottawa, ON",
     "description": "Interlock paving for driveways, patios and walkways in Ottawa."
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.3brothersottawalandscaping.ca/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://www.3brothersottawalandscaping.ca/projects"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Interlock Paving",
+        "item": "https://www.3brothersottawalandscaping.ca/interlock"
+      }
+    ]
   };
 
 const [sqFt, setSqFt] = useState(100);
@@ -53,6 +78,7 @@ const calculatePrice = (s) => {
         <meta name="description" content="Interlock paving — driveways, patios, walkways. Free estimates in Ottawa. Contact 3 Brothers Landscaping." />
         <link rel="canonical" href={canonical} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
       </Helmet>
 
       <header className="service-hero">
@@ -126,13 +152,13 @@ const calculatePrice = (s) => {
         <h3>Gallery</h3>
         <div className="gallery">
           <Link to="/projects#interlock">
-            <img src={interlock03} alt="Interlock project example" />
+            <img src={interlock03} alt="Professional interlock paving installation in Ottawa" />
           </Link>
           <Link to="/projects#interlock">
-            <img src={interlock04} alt="Interlock walkway example" />
+            <img src={interlock04} alt="Custom interlock walkway project by 3 Brothers" />
           </Link> 
           <Link to="/projects#relevel-repairs">
-            <img src={relevel03} alt="Relevel and repair example" />
+            <img src={relevel03} alt="Relevel and repair service for interlock pavers in Ottawa" />
           </Link>
         </div>
 
