@@ -74,7 +74,7 @@ const calculatePrice = (s) => {
   return (
     <div className="service-page interlock-page">
       <Helmet>
-        <title>Interlock Paving Ottawa | 3 Brothers Landscaping</title>
+        <title>Interlock Ottawa | 3 Brothers Landscaping</title>
         <meta name="description" content="Interlock paving — driveways, patios, walkways. Free estimates in Ottawa. Contact 3 Brothers Landscaping." />
         <link rel="canonical" href={canonical} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>

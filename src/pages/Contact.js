@@ -180,7 +180,7 @@ const Contact = () => {
         <h3>Our Projects</h3>
         <div className="projects-grid">
           {projectImages.map((img, idx) => {
-            const projectTypes = ['Interlock Paving', 'Landscaping', 'Decks & Railings', 'Retaining Walls', 'Stamped Concrete', 'Pergolas', 'Relevel & Repairs', 'Driveways', 'Fences', 'Pressure Washing'];
+            const projectTypes = ['Interlock', 'Landscaping', 'Decks & Railings', 'Retaining Walls', 'Stamped Concrete', 'Pergolas', 'Relevel & Repairs', 'Driveways', 'Fences', 'Pressure Washing'];
             const projectType = projectTypes[idx % projectTypes.length];
             return (
               <div key={idx} className="project-thumb">
