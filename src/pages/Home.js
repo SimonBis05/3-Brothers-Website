@@ -126,7 +126,7 @@ const Home = () => {
         }}
       >
         <div className="hero-content">
-          <h1>Make your dream project come to life</h1>
+          <h1>Ottawa Landscaping Company You Can Trust</h1>
           <Link to="/contact-us"><button className="hero-button">Get a Quote</button></Link>
         </div>
       </section>
