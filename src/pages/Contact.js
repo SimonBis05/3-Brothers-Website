@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import './Contact.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 import interlockImg from '../assets/Interlock/interlock_01.webp';
 import landscapingImg from '../assets/Landscaping/landscaping_01.webp';
 import decksImg from '../assets/Decks_&_Railings/deck_01.webp';
@@ -13,6 +15,8 @@ import fenceImg from '../assets/Fences/fence_01.webp';
 import pressureImg from '../assets/Pressure_Washing_&_Resand/pressure_01.webp';
 
 const Contact = () => {
+  const { language } = useLanguage();
+  const t = (key) => translations[language]?.[key] || key;
   const FORM_ENDPOINT = 'https://formspree.io/f/mykyqjbe';
   const [form, setForm] = useState({
     name: '',
@@ -31,11 +35,11 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
-      setStatus({ type: 'error', message: 'Please fill in Name, Email and Message.' });
+      setStatus({ type: 'error', message: t('fillRequired') });
       return;
     }
 
-    setStatus({ type: 'loading', message: 'Sending message...' });
+    setStatus({ type: 'loading', message: t('sendingMessage') });
 
     try {
       const res = await fetch(FORM_ENDPOINT, {
@@ -52,13 +56,13 @@ const Contact = () => {
 
       const data = await res.json().catch(() => ({}));
       if (res.ok) {
-        setStatus({ type: 'success', message: 'Message sent — we will get back to you shortly.' });
+        setStatus({ type: 'success', message: t('messageSent') });
         setForm({ name: '', email: '', phone: '', subject: '', message: '' });
       } else {
-        setStatus({ type: 'error', message: data.error || 'Sending failed. Please try again later.' });
+        setStatus({ type: 'error', message: data.error || t('sendingFailed') });
       }
     } catch (err) {
-      setStatus({ type: 'error', message: 'Network error. Please try again later.' });
+      setStatus({ type: 'error', message: t('networkError') });
     }
   };
 
@@ -67,28 +71,28 @@ const Contact = () => {
   return (
     <div className="contact-page">
       <Helmet>
-        <title>Contact Us - Get Free Quote | 3 Brothers Ottawa Landscaping</title>
-        <meta name="description" content="Contact 3 Brothers Ottawa Landscaping for a free landscaping quote. Call (613) 798-3968 or fill out our form. We serve Ottawa, Ontario." />
+        <title>{t('contactTitle')}</title>
+        <meta name="description" content={t('contactPageMeta')} />
         <link rel="canonical" href="https://www.3brothersottawalandscaping.ca/contact-us" />
       </Helmet>
       <div className="contact-container">
         {/* Left Section: Contact Info */}
         <section className="contact-info-section">
-          <h2>Connect with Us</h2>
-          <p className="intro-text">Have a project in mind? Get in touch with our team to discuss your landscaping needs and get a free quote.</p>
+          <h2>{t('connectWithUs')}</h2>
+          <p className="intro-text">{t('projectInMind')}</p>
 
           <div className="info-item">
             <span className="info-icon">📍</span>
             <div>
-              <h4>Location</h4>
-              <p>Ottawa, Ontario</p>
+              <h4>{t('location')}</h4>
+              <p>{t('ottawa')}</p>
             </div>
           </div>
 
           <div className="info-item">
             <span className="info-icon">📞</span>
             <div>
-              <h4>Phone</h4>
+              <h4>{t('phone')}</h4>
               <p><a href="tel:+16137983968">(613) 798-3968</a></p>
             </div>
           </div>
@@ -96,7 +100,7 @@ const Contact = () => {
           <div className="info-item">
             <span className="info-icon">✉️</span>
             <div>
-              <h4>Email</h4>
+              <h4>{t('email')}</h4>
               <p><a href="mailto:3brothersottawalandscaping@gmail.com">3brothersottawalandscaping@gmail.com</a></p>
             </div>
           </div>
@@ -113,7 +117,7 @@ const Contact = () => {
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="Your Name"
+                  placeholder={t('yourName')}
                   required
                 />
               </div>
@@ -124,7 +128,7 @@ const Contact = () => {
                   name="email"
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="Your email"
+                  placeholder={t('yourEmail')}
                   required
                 />
               </div>
@@ -137,7 +141,7 @@ const Contact = () => {
                 name="phone"
                 value={form.phone}
                 onChange={handleChange}
-                placeholder="Phone"
+                placeholder={t('phoneNumber')}
               />
             </div>
 
@@ -148,7 +152,7 @@ const Contact = () => {
                 name="subject"
                 value={form.subject}
                 onChange={handleChange}
-                placeholder="Subject"
+                placeholder={t('messageSubject')}
               />
             </div>
 
@@ -159,13 +163,13 @@ const Contact = () => {
                 rows="6"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Message"
+                placeholder={t('yourMessage')}
                 required
               />
             </div>
 
             <div className="form-actions">
-              <button type="submit" className="submit-button">Send Message</button>
+              <button type="submit" className="submit-button">{t('sendBtn')}</button>
             </div>
 
             {status && (
@@ -177,14 +181,14 @@ const Contact = () => {
 
       {/* Project Gallery Below */}
       <div className="contact-projects">
-        <h3>Our Projects</h3>
+        <h3>{t('projectsTitle')}</h3>
         <div className="projects-grid">
           {projectImages.map((img, idx) => {
-            const projectTypes = ['Interlock', 'Landscaping', 'Decks & Railings', 'Retaining Walls', 'Stamped Concrete', 'Pergolas', 'Relevel & Repairs', 'Driveways', 'Fences', 'Pressure Washing'];
+            const projectTypes = [t('interlock'), t('landscaping'), t('decking'), t('retainingWalls'), t('stampedConcrete'), t('pergolas'), t('relevel'), t('driveways'), t('fences'), t('pressureWashing')];
             const projectType = projectTypes[idx % projectTypes.length];
             return (
               <div key={idx} className="project-thumb">
-                <img src={img} alt={`${projectType} project example - 3 Brothers Ottawa Landscaping`} />
+                <img src={img} alt={`${projectType} ${t('projectAltSuffix')}`} />
               </div>
             );
           })}

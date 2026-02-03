@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Services.css';
 import { Helmet } from 'react-helmet-async';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../translations';
 import basketweave from '../../assets/Services_Images/basketweave.webp';
 import herringbone from '../../assets/Services_Images/herringbone.webp';
 import running_bond from '../../assets/Services_Images/running_bond.webp';
@@ -12,11 +14,13 @@ import relevel03 from '../../assets/Relevels_&_Repairs/relevel_03.webp';
 
 
 const Interlock = () => {
+  const { language } = useLanguage();
+  const t = (key) => translations[language]?.[key] || key;
   const canonical = 'https://www.3brothersottawalandscaping.ca/interlock';
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Interlock Paving",
+    "name": t('interlockTitle'),
     "provider": {
       "@type": "LocalBusiness",
       "name": "3 Brothers Landscaping",
@@ -28,7 +32,7 @@ const Interlock = () => {
       }
     },
     "areaServed": "Ottawa, ON",
-    "description": "Interlock paving for driveways, patios and walkways in Ottawa."
+    "description": t('interlockIntro')
   };
 
   const breadcrumbLd = {
@@ -38,19 +42,19 @@ const Interlock = () => {
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "Home",
+        "name": t('home'),
         "item": "https://www.3brothersottawalandscaping.ca/"
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Services",
+        "name": t('services'),
         "item": "https://www.3brothersottawalandscaping.ca/projects"
       },
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Interlock Paving",
+        "name": t('interlockTitle'),
         "item": "https://www.3brothersottawalandscaping.ca/interlock"
       }
     ]
@@ -74,35 +78,35 @@ const calculatePrice = (s) => {
   return (
     <div className="service-page interlock-page">
       <Helmet>
-        <title>Interlock Ottawa | 3 Brothers Landscaping</title>
-        <meta name="description" content="Interlock paving — driveways, patios, walkways. Free estimates in Ottawa. Contact 3 Brothers Landscaping." />
+        <title>{t('interlockTitle')} | 3 Brothers Landscaping</title>
+        <meta name="description" content={t('interlockIntro')} />
         <link rel="canonical" href={canonical} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
       </Helmet>
 
       <header className="service-hero">
-        <h1>Interlock Paving in Ottawa</h1>
+        <h1>{t('interlockTitle')}</h1>
       </header>
 
       <section className="service-content">
-        <h2>Types of Interlock Services</h2>
-        <p>We specialize in a variety of interlock paving projects:</p>
-        <p><strong>Patios:</strong> Outdoor living spaces with 60mm pavers for comfort and style.</p>
-        <p><strong>Driveways and Extensions:</strong> Durable 80mm pavers for heavy traffic areas.</p>
-        <p><strong>Walkways:</strong> Connecting paths with elegant designs.</p>
-        <p><strong>Retaining Walls:</strong> Structural support with interlock blocks.</p>
-        <p><strong>Interlock Steps:</strong> Safe and attractive staircases.</p>
-        <p><strong>Firepits:</strong> Custom-built fire pits with gaslines for outdoor enjoyment.</p>
-        <p><strong>Pressure Washing:</strong> Deep cleaning of pavers and application of fresh polymeric sand to joints.</p>
-        <p><strong>Relevels and Repairs:</strong> Restore and maintain existing installations.</p>
+        <h2>{t('interlockTypesTitle')}</h2>
+        <p>{t('interlockIntro')}</p>
+        <p><span className="svc-label">{t('interlockPatios')}: </span>{t('interlockPatiosDesc')}</p>
+        <p><span className="svc-label">{t('interlockDriveways')}: </span>{t('interlockDrivewaysDesc')}</p>
+        <p><span className="svc-label">{t('interlockWalkways')}: </span>{t('interlockWalkwaysDesc')}</p>
+        <p><span className="svc-label">{t('interlockRetainingWalls')}: </span>{t('interlockRetainingWallsDesc')}</p>
+        <p><span className="svc-label">{t('interlockSteps')}: </span>{t('interlockStepsDesc')}</p>
+        <p><span className="svc-label">{t('interlockFirepits')}: </span>{t('interlockFirepitsDesc')}</p>
+        <p><span className="svc-label">{t('interlockPressure')}: </span>{t('interlockPressureDesc')}</p>
+        <p><span className="svc-label">{t('interlockRelevels')}: </span>{t('interlockRelevelsDesc')}</p>
         
         <div className="calculator">
-        <h2>Try Our Interlocking Pricing Calculator!</h2>
-          <p>Our pricing calculator provides a <strong>basic average cost</strong> for your interlocking project.</p>
-          <p>For a precise quote, we’ll need to visit your site, assess the area, and take measurements. Don’t worry if the estimate exceeds your budget—our expert designers can create a customized plan to fit your financial needs.</p>
-          <p><strong>Please note:</strong> all prices are approximate and may vary based on project specifics and stone choice.</p>
-          <label htmlFor="sqft-input">Square Footage:</label>
+        <h2>{t('interlockCalculatorTitle')}</h2>
+          <p>{t('interlockCalculatorIntro')}</p>
+          <p>{t('interlockEstimateDetail')}</p>
+          <p><strong>{t('interlockCalculatorNote')}</strong></p>
+          <label htmlFor="sqft-input">{t('sqftLabel')}</label>
           <input
             id="sqft-input"
             type="number"
@@ -124,46 +128,46 @@ const calculatePrice = (s) => {
             onChange={(e) => setSqFt(parseInt(e.target.value))}
           />
           <p>
-            Estimated Price: <span className="price">${price.toLocaleString()}</span>
+            {t('estimatedPriceLabel')} <span className="price">${price.toLocaleString()}</span>
         </p>
         </div>
 
-        <h2>Interlock Patterns</h2>
-        <p>Choose from our popular patterns:</p>
+        <h2>{t('interlockPatternsTitle')}</h2>
+        <p>{t('choosePatterns')}</p>
         <div className="patterns">
           <div className="pattern">
-            <img src={running_bond} alt="Running Bond pattern" />
-            <p>Running Bond</p>
+            <img src={running_bond} alt={t('patternRunningBondAlt')} />
+            <p>{t('patternRunningBond')}</p>
           </div>
           <div className="pattern">
-            <img src={basketweave} alt="Basketweave pattern" />
-            <p>Basketweave</p>
+            <img src={basketweave} alt={t('patternBasketweaveAlt')} />
+            <p>{t('patternBasketweave')}</p>
           </div>
           <div className="pattern">
-            <img src={herringbone} alt="Herringbone pattern" />
-            <p>Herringbone</p>
+            <img src={herringbone} alt={t('patternHerringboneAlt')} />
+            <p>{t('patternHerringbone')}</p>
           </div>
           <div className="pattern">
-            <img src={regular_random} alt="Regular Random Interlock pattern" className="full-fit" />
-            <p>Regular Random Interlock</p>
+            <img src={regular_random} alt={t('patternRegularRandomAlt')} className="full-fit" />
+            <p>{t('patternRegularRandom')}</p>
           </div>
         </div>
 
-        <h3>Gallery</h3>
+        <h3>{t('interlockPatternsTitle')}</h3>
         <div className="gallery">
           <Link to="/projects#interlock">
-            <img src={interlock03} alt="Professional interlock paving installation in Ottawa" />
+            <img src={interlock03} alt={t('interlockGalleryImg1Alt')} />
           </Link>
           <Link to="/projects#interlock">
-            <img src={interlock04} alt="Custom interlock walkway project by 3 Brothers" />
+            <img src={interlock04} alt={t('interlockGalleryImg2Alt')} />
           </Link> 
           <Link to="/projects#relevel-repairs">
-            <img src={relevel03} alt="Relevel and repair service for interlock pavers in Ottawa" />
+            <img src={relevel03} alt={t('interlockGalleryImg3Alt')} />
           </Link>
         </div>
 
         <div className="cta">
-          <a href="/contact-us" className="btn">Request a free estimate</a>
+          <a href="/contact-us" className="btn">{t('requestEstimate')}</a>
         </div>
       </section>
     </div>

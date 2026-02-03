@@ -1,8 +1,12 @@
 import React from 'react';
 import './Services.css';
 import { Helmet } from 'react-helmet-async';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../translations';
 
 const Fences = () => {
+  const { language } = useLanguage();
+  const t = (key) => translations[language]?.[key] || key;
   const canonical = 'https://www.3brothersottawalandscaping.ca/fences';
   const jsonLd = {
     "@context": "https://schema.org",
@@ -50,30 +54,30 @@ const Fences = () => {
   return (
     <div className="service-page fences-page">
       <Helmet>
-        <title>Fences Ottawa | 3 Brothers Landscaping</title>
-        <meta name="description" content="Fence installation and repair in Ottawa — privacy, decorative and security fences." />
+        <title>{t('fencesTitle')} | 3 Brothers Landscaping</title>
+        <meta name="description" content={t('fencesHero')} />
         <link rel="canonical" href={canonical} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
       </Helmet>
 
       <header className="service-hero">
-        <h1>Fences</h1>
-        <p>We install and repair wood, vinyl and metal fences across Ottawa.</p>
+        <h1>{t('fencesTitle')}</h1>
+        <p>{t('fencesHero')}</p>
       </header>
 
       <section className="service-content">
-        <p>We install and repair vinyl, wood, and metal fences across Ottawa, providing durable, stylish, and low-maintenance solutions for any property.</p>
+        <p>{t('fencesIntro')}</p>
 
-        <h2>Fence Types</h2>
-        <p><strong>PVC Fences:</strong> Clean, modern, and low-maintenance. With proper installation, it may be the last fence you'll ever need.</p>
-        <p><strong>Hybrid Fences:</strong> Combine the beauty of wood or PVC with steel for privacy, sound reduction, and weather resistance.</p>
-        <p><strong>Wood Fences:</strong> Timeless and versatile, using cedar or pressure-treated lumber for durability and natural beauty.</p>
-        <p><strong>Ornamental Iron Fences:</strong> Elegant and secure, protecting your space while keeping the view open.</p>
-        <p><strong>Chain Link Fences:</strong> Affordable, durable, and versatile—ideal for backyards, pools, and commercial areas.</p>
-        <p><strong>Glass Fences:</strong> Sleek and modern, offering openness and sophistication for decks, patios, and pool areas.</p>
+        <h2>{t('fencesTypesTitle')}</h2>
+        <p><span className="svc-label">{t('fencesPVCLabel')}: </span><span className="svc-desc">{t('fencesPVCDesc')}</span></p>
+        <p><span className="svc-label">{t('fencesHybridLabel')}: </span><span className="svc-desc">{t('fencesHybridDesc')}</span></p>
+        <p><span className="svc-label">{t('fencesWoodLabel')}: </span><span className="svc-desc">{t('fencesWoodDesc')}</span></p>
+        <p><span className="svc-label">{t('fencesIronLabel')}: </span><span className="svc-desc">{t('fencesIronDesc')}</span></p>
+        <p><span className="svc-label">{t('fencesChainLabel')}: </span><span className="svc-desc">{t('fencesChainDesc')}</span></p>
+        <p><span className="svc-label">{t('fencesGlassLabel')}: </span><span className="svc-desc">{t('fencesGlassDesc')}</span></p>
 
-        <div className="cta"><a href="/contact-us" className="btn">Request a free estimate</a></div>
+        <div className="cta"><a href="/contact-us" className="btn">{t('requestEstimate')}</a></div>
       </section>
     </div>
   );

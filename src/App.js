@@ -9,6 +9,7 @@ import Interlock from './pages/services/Interlock';
 import Decks from './pages/services/Decks';
 import Landscaping from './pages/services/Landscaping';
 import Fences from './pages/services/Fences';
+import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
 
 function AppContent() {
@@ -39,9 +40,11 @@ function AppContent() {
 
 function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </LanguageProvider>
   );
 }
 

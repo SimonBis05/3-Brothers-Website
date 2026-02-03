@@ -4,25 +4,30 @@ import './Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 function Footer() {
+  const { language } = useLanguage();
+  const t = (key) => translations[language]?.[key] || key;
+
   return (
     <footer className="footer">
       <div className="footer-section services">
-        <h2>Services</h2>
+        <h2>{t('footerServices')}</h2>
         <ul>
-          <li><Link to="/interlock">Interlock</Link></li>
-          <li><Link to="/landscaping">Landscaping</Link></li>
-          <li><Link to="/decks">Decking & Railings</Link></li>
-          <li><Link to="/fences">Fences</Link></li>
+          <li><Link to="/interlock">{t('interlock')}</Link></li>
+          <li><Link to="/landscaping">{t('landscaping')}</Link></li>
+          <li><Link to="/decks">{t('decking')}</Link></li>
+          <li><Link to="/fences">{t('fences')}</Link></li>
         </ul>
       </div>
       <div className="footer-section contact">
-        <h2>Contact Us</h2>
+        <h2>{t('contactUs')}</h2>
         <p><strong>3 Brothers Landscaping</strong></p>
         <p className="contact-item">
           <FontAwesomeIcon icon={faMapMarkerAlt} className="contact-icon" />
-          Ottawa, ON
+          {t('ottawa')}
         </p>
         <p className="contact-item">
           <FontAwesomeIcon icon={faEnvelope} className="contact-icon" />

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import './Home.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 import interlockImg from '../assets/Interlock/interlock_01.webp';
 import landscapingImg from '../assets/Landscaping/landscaping_01.webp';
@@ -37,84 +39,99 @@ imagesToPreload.forEach(src => {
 
 const services = [
   {
-    name: 'Interlock',
+    name: 'interlock',
+    translationKey: 'interlock',
     img: interlockImg,
-    desc: 'Installation of pads, pathways, and patios using pavers for durable outdoor surfaces.',
+    descKey: 'interlockDesc',
   },
   {
-    name: 'Retaining Walls',
+    name: 'retainingWalls',
+    translationKey: 'retainingWalls',
     img: wallImg,
-    desc: 'Building stone walls to manage slopes, create garden tiers, or provide structural support throughout your property.',
+    descKey: 'retainingWallsDesc',
   },
   {
-    name: 'Landscaping',
+    name: 'landscaping',
+    translationKey: 'landscaping',
     img: landscapingImg,
-    desc: 'Softscaping services including sod, artificial grass, garden beds, mulch, river rock, and professional garden hedging.',
+    descKey: 'landscapingDesc',
   },
   {
-    name: 'Driveways',
+    name: 'driveways',
+    translationKey: 'driveways',
     img: drivewayImg,
-    desc: 'Building interlock driveways with reinforced base preparation and custom paver borders to ensure a level, durable, and well-defined surface.',
+    descKey: 'drivewaysDesc',
   },
   {
-    name: 'Fences',
+    name: 'fences',
+    translationKey: 'fences',
     img: fenceImg,
-    desc: 'Professional installation of wood and PVC privacy fences designed to define property boundaries and provide secure perimeter screening.',
+    descKey: 'fencesDesc',
   },
   {
-    name: 'Decks',
+    name: 'decks',
+    translationKey: 'decking',
     img: decksImg,
-    desc: 'Building custom decks using natural wood or weather-resistant PVC materials to create functional lounging and dining spaces.',
+    descKey: 'decksDesc',
   },
   {
-    name: 'Fire Pits',
+    name: 'firePits',
+    translationKey: 'firePits',
     img: firepitImg,
-    desc: 'Installing custom gas or propane fire pits with integrated gas lines, using either pre-made metal units or custom-built stone and interlock structures.',
+    descKey: 'firePixtsDesc',
   },
   {
-    name: '3D Design',
+    name: 'design',
+    translationKey: 'design',
     img: designImg,
-    desc: 'Digital 3D models of your project to plan layouts, elevations, and material choices before construction starts.',
+    descKey: 'designDesc',
   },
   {
-    name: 'Stamped Concrete',
+    name: 'stampedConcrete',
+    translationKey: 'stampedConcrete',
     img: stampedPadImg,
-    desc: 'Poured concrete surfaces featuring dyed and stamped patterns to resemble natural stone, slate, or brick.',
+    descKey: 'stampedDesc',
   },
   {
-    name: 'Pressure Washing',
+    name: 'pressureWashing',
+    translationKey: 'pressureWashing',
     img: pressureImg,
-    desc: 'Deep cleaning pavers and applying fresh polymeric sand to joints to eliminate weeds and ensure proper drainage.',
+    descKey: 'pressureDesc',
   },
   {
-    name: 'Pergolas',
+    name: 'pergolas',
+    translationKey: 'pergolas',
     img: pergolaImg,
-    desc: 'Design and assembly of wood or PVC pergolas to add shade and structure to your backyard or patio.',
+    descKey: 'pergolaDesc',
   },
   {
-    name: 'Relevel & Repairs',
+    name: 'relevel',
+    translationKey: 'relevel',
     img: repairImg,
-    desc: 'Fixing cracked stones and re-leveling sunken interlock pads to correct pooling water and uneven surfaces.',
+    descKey: 'relevelDesc',
   }
 ];
 
 const slug = (name) => name.replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '').toLowerCase();
 
 const getServiceRoute = (name) => {
-  const interlockServices = ['Interlock', 'Retaining Walls', 'Driveways', 'Fire Pits', '3D Design', 'Pressure Washing', 'Relevel & Repairs'];
+  const interlockServices = ['interlock', 'retainingWalls', 'driveways', 'firePits', 'design', 'pressureWashing', 'relevel'];
   if (interlockServices.includes(name)) return '/interlock';
-  if (name === 'Landscaping' || name === 'Pergolas') return '/landscaping';
-  if (name === 'Decks') return '/decks';
-  if (name === 'Fences') return '/fences';
-  return `/projects#${slug(name)}`; // fallback for others like Stamped Concrete
+  if (name === 'landscaping' || name === 'pergolas') return '/landscaping';
+  if (name === 'decks') return '/decks';
+  if (name === 'fences') return '/fences';
+  return `/projects#${slug(name)}`; // fallback for others like stampedConcrete
 };
 
 const Home = () => {
+  const { language } = useLanguage();
+  const t = (key) => translations[language]?.[key] || key;
+
   return (
     <div className="home">
       <Helmet>
-        <title>Ottawa Landscaping Company | 3 Brothers Ottawa Landscaping</title>
-        <meta name="description" content="3 Brothers Ottawa Landscaping provides professional landscaping, interlock, decks, and fencing services in Ottawa, ON. Free estimates. Call (613) 798-3968." />
+        <title>{t('homeTitle')}</title>
+        <meta name="description" content={t('metaDescription')} />
         <link rel="canonical" href="https://www.3brothersottawalandscaping.ca/" />
       </Helmet>
       <section
@@ -126,22 +143,22 @@ const Home = () => {
         }}
       >
         <div className="hero-content">
-          <h1>Ottawa Landscaping Company You Can Trust</h1>
-          <Link to="/contact-us"><button className="hero-button">Get a Quote</button></Link>
+          <h1>{t('heroTitle')}</h1>
+          <Link to="/contact-us"><button className="hero-button">{t('getQuote')}</button></Link>
         </div>
       </section>
 
       <section className="services-section">
         <div className="home-content">
-          <h1>Our Services</h1>
+          <h1>{t('ourServices')}</h1>
           <div className="services-list">
             {services.map(service => (
               <Link key={service.name} to={getServiceRoute(service.name)} className="service-link">
                 <div className="service-card large" >
-                  <img src={service.img} alt={`${service.name} - 3 Brothers Ottawa Landscaping`} />
+                  <img src={service.img} alt={`${t(service.translationKey)} - 3 Brothers Ottawa Landscaping`} />
                   <div>
-                    <h3>{service.name}</h3>
-                    <p>{service.desc}</p>
+                    <h3>{t(service.translationKey)}</h3>
+                    <p>{t(service.descKey)}</p>
                   </div>
                 </div>
               </Link>

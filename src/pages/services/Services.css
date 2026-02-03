@@ -19,7 +19,11 @@
 }
 .service-content h2 { margin-top: 1rem; color: #e6e6e6 }
 .service-content p { line-height: 1.8; color: #ddd }
-.service-content strong { color: #8ED433; }
+.service-content strong { color: inherit; }
+
+/* service label (before colon) should be green, description white */
+.svc-label { color: #8ED433; }
+.svc-desc { color: #fff; }
 
 .no-bullets {
   list-style: none;

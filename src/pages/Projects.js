@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import './Projects.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 // dynamically import all images from each assets subfolder using webpack require.context
 const importAll = (r) => r.keys().sort().map(r);
@@ -21,67 +23,69 @@ const relevelImages = importAll(require.context('../assets/Relevels_&_Repairs', 
 const services = [
   {
     id: 'interlock',
-    title: 'Interlock',
+    titleKey: 'interlock',
     images: interlockImages,
   },
   {
     id: 'retaining-walls',
-    title: 'Retaining Walls',
+    titleKey: 'retainingWalls',
     images: retainingImages,
   },
   {
     id: 'landscaping',
-    title: 'Landscaping',
+    titleKey: 'landscaping',
     images: landscapingImages,
   },
   {
     id: 'driveways',
-    title: 'Driveways',
+    titleKey: 'driveways',
     images: drivewaysImages,
   },
   {
     id: 'stamped-concrete',
-    title: 'Stamped Concrete',
+    titleKey: 'stampedConcrete',
     images: stampedImages,
   },
   {
     id: 'fire-pits',
-    title: 'Fire Pits',
+    titleKey: 'firePits',
     images: firepitsImages,
   },
   {
     id: 'decks',
-    title: 'Decks',
+    titleKey: 'decking',
     images: decksImages,
   },
   {
     id: 'fences',
-    title: 'Fences',
+    titleKey: 'fences',
     images: fencesImages,
   },
   {
     id: '3d-design',
-    title: '3D Design',
+    titleKey: 'design',
     images: designImages,
   },
   {
     id: 'pressure-washing',
-    title: 'Pressure Washing',
+    titleKey: 'pressureWashing',
     images: pressureImages,
   },
   {
     id: 'pergolas',
-    title: 'Pergolas',
+    titleKey: 'pergolas',
     images: pergolasImages,
   },
   {
     id: 'relevel-repairs',
-    title: 'Relevel & Repairs',
+    titleKey: 'relevel',
     images: relevelImages,
   }
 ];
 
 const Projects = () => {
+  const { language } = useLanguage();
+  const t = (key) => translations[language]?.[key] || key;
   const [lightbox, setLightbox] = useState({ open: false, serviceIdx: 0, imgIdx: 0 });
   const [carouselStart, setCarouselStart] = useState(() => services.reduce((acc, _, i) => ({ ...acc, [i]: 0 }), {}));
 
@@ -140,11 +144,11 @@ const Projects = () => {
   return (
     <div className="projects-page">
       <Helmet>
-        <title>Project Gallery - See Our Work | 3 Brothers Ottawa Landscaping</title>
-        <meta name="description" content="Browse our landscaping project portfolio including interlock patios, decks, fences, retaining walls, and more in Ottawa. View before & after photos." />
+        <title>{t('projectsPageTitle')}</title>
+        <meta name="description" content={t('projectsMetaDescription')} />
         <link rel="canonical" href="https://www.3brothersottawalandscaping.ca/projects" />
       </Helmet>
-      <h1 style={{ textAlign: 'center', color: '#8ED433', marginBottom: '30px', marginTop: '20px' }}>Our Project Gallery</h1>
+      <h1 style={{ textAlign: 'center', color: '#8ED433', marginBottom: '30px', marginTop: '20px' }}>{t('projectsGalleryTitle')}</h1>
       {services.map((s, si) => {
         const len = s.images.length;
         const start = carouselStart[si] || 0;
@@ -153,7 +157,7 @@ const Projects = () => {
 
         return (
           <section className="service-section" id={s.id} key={s.id}>
-            <h3>{s.title}</h3>
+            <h3>{t(s.titleKey)}</h3>
 
             <div className="carousel-wrapper">
               <button className={`carousel-nav left ${len > VISIBLE ? '' : 'hidden'}`} onClick={() => shiftPrev(si)} aria-label="Previous">‹</button>
@@ -161,7 +165,7 @@ const Projects = () => {
               <div className="service-carousel">
                 {visibleIdx.map((imgIdx) => (
                   <button key={imgIdx} className="thumb-btn" onClick={() => openLightbox(si, imgIdx)}>
-                    <img src={s.images[imgIdx]} alt={`${s.title} ${imgIdx + 1}`} />
+                    <img src={s.images[imgIdx]} alt={`${t(s.titleKey)} ${imgIdx + 1}`} />
                   </button>
                 ))}
               </div>
@@ -177,8 +181,8 @@ const Projects = () => {
           <button className="lb-close" onClick={(e) => { e.stopPropagation(); closeLightbox(); }}>✕</button>
           <button className="lb-prev" onClick={(e) => { e.stopPropagation(); prev(); }}>‹</button>
           <div className="lb-content" onClick={(e) => e.stopPropagation()}>
-            <img src={services[lightbox.serviceIdx].images[lightbox.imgIdx]} alt={`${services[lightbox.serviceIdx].title} project photo - view enlarged`} />
-            <div className="lb-caption">{services[lightbox.serviceIdx].title}</div>
+            <img src={services[lightbox.serviceIdx].images[lightbox.imgIdx]} alt={`${t(services[lightbox.serviceIdx].titleKey)} ${t('projectPhotoViewAlt')}`} />
+            <div className="lb-caption">{t(services[lightbox.serviceIdx].titleKey)}</div>
           </div>
           <button className="lb-next" onClick={(e) => { e.stopPropagation(); next(); }}>›</button>
         </div>
