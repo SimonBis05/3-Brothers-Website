@@ -9,6 +9,7 @@ import Interlock from './pages/services/Interlock';
 import Decks from './pages/services/Decks';
 import Landscaping from './pages/services/Landscaping';
 import Fences from './pages/services/Fences';
+import About from './pages/About';
 import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
 
@@ -30,6 +31,7 @@ function AppContent() {
           <Route path="/decks" element={<Decks />} />
           <Route path="/landscaping" element={<Landscaping />} />
           <Route path="/fences" element={<Fences />} />
+          <Route path="/about-us" element={<About />} />
           <Route path="/contact-us" element={<Contact />} />
         </Routes>
       </main>

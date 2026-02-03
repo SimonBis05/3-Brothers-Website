@@ -1,0 +1,87 @@
+.about-hero{
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+.about-hero-inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  backdrop-filter: blur(2px);
+}
+.about-hero h1{
+  color: #8ED433;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  margin-bottom: 0.5rem;
+}
+.about-hero .lead{
+  color: #fff;
+  max-width: 800px;
+}
+.about-content{ max-width: 1100px; margin: 2.5rem auto; padding: 2rem 1rem; background: transparent; border-radius:0; box-shadow: none; min-height: auto; }
+.about-grid{ display: none; }
+.about-section.full-width{
+  background: rgba(6,10,12,0.85);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: stretch;
+}
+.section-inner{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+.section-image{
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+  min-height: 300px;
+}
+.section-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.section-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section-text h2{ color:#8ED433; margin-top: 0; margin-bottom: 1rem; font-size: 1.8rem; }
+.section-text p{ color:#fff; line-height:1.8; margin: 0 0 1rem 0; }
+.section-text ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.section-text li{
+  color:#fff;
+  line-height:1.8;
+  margin-bottom:1rem;
+}
+.about-section:nth-child(even) .section-inner{
+  grid-template-columns: 1fr 1fr;
+  direction: rtl;
+}
+.about-section:nth-child(even) .section-inner > *{
+  direction: ltr;
+}
+.about-cta{ text-align:center; margin-top:3rem; padding-top: 2rem; }
+.btn.primary{ background:#8ED433; color:#191919; padding:0.75rem 1.25rem; border-radius:6px; text-decoration:none; font-weight:700; display:inline-block; }
+
+@media (max-width: 900px) {
+  .section-inner{ grid-template-columns: 1fr; gap: 1.5rem; }
+  .about-section:nth-child(even) .section-inner{
+    direction: ltr;
+  }
+  .section-image{ min-height: 250px; }
+  .section-text h2{ font-size: 1.5rem; }
+  .about-hero h1{ font-size: 1.8rem; }
+}
