@@ -160,20 +160,6 @@
   transform: scale(1.03);
 }
 
-/* .lang-btn.active {
-  color: #8ED433;
-  opacity: 1;
-  transform: scale(1.02);
-} */
-
-/* smaller adjustments for narrow screens */
-@media (max-width: 600px) {
-  .lang-btn {
-    font-size: clamp(0.75rem, 2.5vw, 0.95rem);
-    padding: 3px 4px;
-  }
-  .header-right { gap: 10px; right: 14px; }
-}
 
 .phone-number {
   margin: 0;
@@ -279,7 +265,7 @@
    Full phone number visible, small fonts
    ============================================ */
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   .header {
     padding: 12px 0;
     --header-occupied-height: 80px;
@@ -344,7 +330,7 @@
    Logo.png only, Phone icon only, Smallest fonts
    ============================================ */
 
-@media (max-width: 730px) {
+@media (max-width: 980px) {
   .header {
     padding: 8px 0;
     --header-occupied-height: 60px;
@@ -411,12 +397,13 @@
   }
 }
 
+
 /* ============================================
    EXTRA SMALL SCREENS (< 480px)
    Reduced navbar font size and padding
    ============================================ */
 
-@media (max-width: 480px) {
+@media (max-width: 630px) {
   .header {
     padding: 6px 0;
     --header-occupied-height: 50px;
@@ -449,5 +436,24 @@
   /* further reduce gap on very small screens */
   .navbar {
     gap: 1px;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .social-icons svg {
+    font-size: .8rem;
+  }
+
+  .phone-icon {
+    gap: 6px;
+    font-size: .8rem;
+  }
+
+  .lang-btn {
+    font-size: .7rem;
   }
 }
