@@ -13,6 +13,14 @@ import About from './pages/About';
 import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
 
+import ReactGA from "react-ga4";
+
+// Initialize with your Measurement ID
+ReactGA.initialize("G-QMQ9T0FGM5");
+
+// Send an initial pageview
+ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+
 function AppContent() {
   const location = useLocation();
 
