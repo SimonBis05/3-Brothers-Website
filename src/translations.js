@@ -431,7 +431,7 @@ export const translations = {
           stars: 5
         },
         {
-          name: "Laeticia P",
+          name: "Laetitia P",
           text: "Nous avons eu une excellente expérience avec ces gars! Ils ont été extrêmement efficaces et ont livré le produit désiré. Ils ont démoli notre ancienne terrasse qui moisissait et en ont construit une solide. Ils ont été accommodants pour chaque demande et excellents en communication. Ils seront notre premier choix pour nos futurs projets.",
           stars: 5
         },
