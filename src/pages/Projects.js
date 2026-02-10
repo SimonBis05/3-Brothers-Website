@@ -90,6 +90,24 @@ const Projects = () => {
   const [carouselStart, setCarouselStart] = useState(() => services.reduce((acc, _, i) => ({ ...acc, [i]: 0 }), {}));
 
   const { hash } = useLocation();
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 600) {
+        setVisibleCount(1);
+      } else if (window.innerWidth <= 900) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(3);
+      }
+    };
+
+    // Run on mount and add listener
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
   if (hash) {
@@ -123,8 +141,6 @@ const Projects = () => {
     });
   };
 
-  const VISIBLE = 3;
-
   const shiftPrev = (si) => {
     setCarouselStart((prev) => {
       const len = services[si].images.length;
@@ -141,6 +157,47 @@ const Projects = () => {
     });
   };
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  // Minimum distance required to be considered a "swipe" (in pixels)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null); // Reset end for new swipe
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = (si) => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      shiftNext(si);
+    } else if (isRightSwipe) {
+      shiftPrev(si);
+    }
+  };
+
+  const onLightboxTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      next(); // Triggers your existing lightbox next()
+    } else if (isRightSwipe) {
+      prev(); // Triggers your existing lightbox prev()
+    }
+  };
+
   return (
     <div className="projects-page">
       <Helmet>
@@ -152,15 +209,20 @@ const Projects = () => {
       {services.map((s, si) => {
         const len = s.images.length;
         const start = carouselStart[si] || 0;
-        const visibleCount = Math.min(VISIBLE, len);
-        const visibleIdx = Array.from({ length: visibleCount }, (_, k) => (start + k) % len);
+        const currentVisibleCount = Math.min(visibleCount, len); 
+        const visibleIdx = Array.from({ length: currentVisibleCount }, (_, k) => (start + k) % len);
 
         return (
           <section className="service-section" id={s.id} key={s.id}>
             <h3>{t(s.titleKey)}</h3>
 
-            <div className="carousel-wrapper">
-              <button className={`carousel-nav left ${len > VISIBLE ? '' : 'hidden'}`} onClick={() => shiftPrev(si)} aria-label="Previous">‹</button>
+            <div className="carousel-wrapper"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={() => onTouchEnd(si)}
+              style={{ touchAction: 'pan-y' }} // Allows vertical scrolling while swiping horizontally
+            >
+              <button className={`carousel-nav left ${len > visibleCount ? '' : 'hidden'}`} onClick={() => shiftPrev(si)} aria-label="Previous">‹</button>
 
               <div className="service-carousel">
                 {visibleIdx.map((imgIdx) => (
@@ -170,20 +232,33 @@ const Projects = () => {
                 ))}
               </div>
 
-              <button className={`carousel-nav right ${len > VISIBLE ? '' : 'hidden'}`} onClick={() => shiftNext(si)} aria-label="Next">›</button>
+              <button className={`carousel-nav right ${len > visibleCount ? '' : 'hidden'}`} onClick={() => shiftNext(si)} aria-label="Next">›</button>
             </div>
           </section>
         );
       })}
 
       {lightbox.open && (
-        <div className="lightbox" onClick={closeLightbox}>
+        <div 
+          className="lightbox" 
+          onClick={closeLightbox}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onLightboxTouchEnd}
+          style={{ touchAction: 'none' }}>
           <button className="lb-close" onClick={(e) => { e.stopPropagation(); closeLightbox(); }}>✕</button>
+          
           <button className="lb-prev" onClick={(e) => { e.stopPropagation(); prev(); }}>‹</button>
+          
           <div className="lb-content" onClick={(e) => e.stopPropagation()}>
-            <img src={services[lightbox.serviceIdx].images[lightbox.imgIdx]} alt={`${t(services[lightbox.serviceIdx].titleKey)} ${t('projectPhotoViewAlt')}`} />
+            <img 
+              src={services[lightbox.serviceIdx].images[lightbox.imgIdx]} 
+              alt={`${t(services[lightbox.serviceIdx].titleKey)}`} 
+              style={{ userSelect: 'none', pointerEvents: 'none' }} 
+            />
             <div className="lb-caption">{t(services[lightbox.serviceIdx].titleKey)}</div>
           </div>
+          
           <button className="lb-next" onClick={(e) => { e.stopPropagation(); next(); }}>›</button>
         </div>
       )}

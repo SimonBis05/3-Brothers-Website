@@ -112,13 +112,45 @@
 .service-card.large {
   background: #191919;
   border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Initial shadow */
   overflow: hidden;
   width: 100%;
   max-width: 360px;
   text-align: center;
   color: #fff;
   font-size: 1.1rem;
+  
+  /* The Secret Sauce: Smooth transition for all properties */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid transparent; /* Prepare for the green border pop */
+}
+
+/* The Hover Effect (Matching your Review Cards) */
+.service-link:hover .service-card.large {
+  transform: translateY(-10px); /* Lifts the card up */
+  box-shadow: 0 20px 40px rgba(142, 212, 51, 0.2); /* Green-tinted glow */
+  border-top: 4px solid #8ED433; /* Adds the green accent bar on hover */
+}
+
+/* Optional: Zoom effect on the image when hovering */
+.service-card.large img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 3px solid #8ED433;
+  transition: transform 0.5s ease; /* Smooth zoom */
+}
+
+.service-link:hover .service-card.large img {
+  transform: scale(1.05); /* Slight zoom into the project photo */
+}
+
+/* Ensure the Link doesn't have an underline */
+.service-link {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .service-card.large img {

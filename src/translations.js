@@ -199,6 +199,26 @@ export const translations = {
     aboutPromiseEstimate: 'Free, No-Obligation Estimates: We provide detailed quotes at no cost to you. No hidden fees, no pressure.',
     aboutPromiseLocal: 'Locally Owned & Operated: We are your neighbors. We take pride in seeing our work as we drive through Ottawa.',
     aboutPromiseSatisfaction: '100% Customer Satisfaction: Our job isn\'t done until you are thrilled with your new outdoor space.',
+
+    reviewsTitle: "What Our Clients Say",
+    readMoreReviews: "Read more on Google",
+    reviews: [
+      {
+        name: "Julie G",
+        text: "We highly recommend these amazing young people. Energetic, fast, efficient and punctual, they communicate very well, validating the final expected result. We are very happy with their meticulous work. Very professional team that we will hire again!",
+        stars: 5
+      },
+      {
+        name: "Laeticia P",
+        text: "We had a great experience with these guys! They were extremely efficient, and delivered the desired product. They tore down our old deck, which was molding, and built a sturdy one. They were accommodating to every request, and were great at communication. They will be our first choice for future projects.",
+        stars: 5
+      },
+      {
+        name: "Olivier Lafontaine",
+        text: "Fantastic team. On time, efficient, and very detail-oriented.",
+        stars: 5
+      }
+    ]
   },
   
   fr: {
@@ -401,6 +421,26 @@ export const translations = {
     aboutPromiseEstimate: 'Devis gratuits et sans obligation : Nous fournissons des estimations détaillées sans frais. Pas de frais cachés, pas de pression.',
     aboutPromiseLocal: 'Entreprise locale : Nous sommes vos voisins. Nous sommes fiers de voir notre travail à travers Ottawa.',
     aboutPromiseSatisfaction: 'Satisfaction client à 100% : Notre travail n\'est pas terminé tant que vous n\'êtes pas ravi de votre nouvel espace extérieur.',
+
+    reviewsTitle: "Ce que disent nos clients",
+      readMoreReviews: "Lire plus sur Google",
+      reviews: [
+        {
+          name: "Julie G",
+          text: "Nous recommandons fortement ces jeunes gens incroyables. Énergiques, rapides, efficaces et ponctuels, ils communiquent très bien, validant le résultat final attendu. Nous sommes très heureux de leur travail méticuleux. Une équipe très professionnelle que nous réembaucherons!",
+          stars: 5
+        },
+        {
+          name: "Laeticia P",
+          text: "Nous avons eu une excellente expérience avec ces gars! Ils ont été extrêmement efficaces et ont livré le produit désiré. Ils ont démoli notre ancienne terrasse qui moisissait et en ont construit une solide. Ils ont été accommodants pour chaque demande et excellents en communication. Ils seront notre premier choix pour nos futurs projets.",
+          stars: 5
+        },
+        {
+          name: "Olivier Lafontaine",
+          text: "Équipe fantastique. À l'heure, efficace et avec un grand souci du détail.",
+          stars: 5
+        }
+      ]
   }
 };
 

@@ -12,6 +12,7 @@ import Fences from './pages/services/Fences';
 import About from './pages/About';
 import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
+import Reviews from './components/Reviews';
 
 import ReactGA from "react-ga4";
 
@@ -43,6 +44,7 @@ function AppContent() {
           <Route path="/contact-us" element={<Contact />} />
         </Routes>
       </main>
+      <Reviews />
       <Footer />
     </div>
   );

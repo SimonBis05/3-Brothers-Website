@@ -76,11 +76,44 @@
 .btn.primary{ background:#8ED433; color:#191919; padding:0.75rem 1.25rem; border-radius:6px; text-decoration:none; font-weight:700; display:inline-block; }
 
 @media (max-width: 900px) {
-  .section-inner{ grid-template-columns: 1fr; gap: 1.5rem; }
-  .about-section:nth-child(even) .section-inner{
-    direction: ltr;
+  /* Stack everything vertically */
+  .section-inner {
+    display: flex;
+    flex-direction: column; /* Force vertical stack */
+    gap: 1.5rem;
   }
-  .section-image{ min-height: 250px; }
-  .section-text h2{ font-size: 1.5rem; }
-  .about-hero h1{ font-size: 1.8rem; }
+
+  /* Ensure image is always first in the stack */
+  .section-image {
+    order: -1; /* Moves image to the top regardless of HTML order */
+    min-height: auto;
+    height: 200px; /* Smaller, controlled height for mobile */
+    width: 100%;
+    max-width: 450px; /* Prevents image from getting too huge on tablets */
+    margin: 0 auto; /* Centers the smaller image */
+  }
+
+  /* Reset the alternating row trick for mobile */
+  .about-section:nth-child(even) .section-inner {
+    direction: ltr; /* Reset direction */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-text {
+    text-align: center; /* Optional: centers text for a cleaner mobile look */
+  }
+
+  .section-text h2 {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .about-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .about-section.full-width {
+    padding: 1.5rem; /* Slightly less padding on mobile */
+  }
 }
