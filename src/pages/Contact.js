@@ -18,6 +18,7 @@ const Contact = () => {
   const { language } = useLanguage();
   const t = (key) => translations[language]?.[key] || key;
   const FORM_ENDPOINT = 'https://formspree.io/f/mykyqjbe';
+  
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -25,6 +26,7 @@ const Contact = () => {
     subject: '',
     message: '',
   });
+  
   const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
@@ -55,9 +57,22 @@ const Contact = () => {
       });
 
       const data = await res.json().catch(() => ({}));
+      
       if (res.ok) {
         setStatus({ type: 'success', message: t('messageSent') });
         setForm({ name: '', email: '', phone: '', subject: '', message: '' });
+
+        // --- NEW: Meta Pixel / CRM Conversion Tracking ---
+        // Checks if the Facebook Pixel is loaded on the page
+        if (window.fbq) {
+          window.fbq('track', 'Lead', {
+            content_name: 'Contact Form',
+            value: 0.00, // Optional: You can assign a value to a lead if you want
+            currency: 'CAD'
+          });
+        }
+        // --------------------------------------------------
+
       } else {
         setStatus({ type: 'error', message: data.error || t('sendingFailed') });
       }
